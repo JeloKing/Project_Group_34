@@ -5,3 +5,10 @@ C:\Users\Jeldert\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
 C:\Users\Jeldert\source\repos\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
 C:\Users\Jeldert\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
 C:\Users\Jeldert\source\repos\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe.config
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.exe
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\ConsoleApp1\ConsoleApp1\bin\Debug\ConsoleApp1.pdb
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csprojAssemblyReference.cache
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.csproj.CoreCompileInputs.cache
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.exe
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\ConsoleApp1\ConsoleApp1\obj\Debug\ConsoleApp1.pdb
