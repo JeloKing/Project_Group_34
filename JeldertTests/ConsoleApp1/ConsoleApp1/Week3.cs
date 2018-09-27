@@ -10,13 +10,20 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            int counter = 0,
-                nummer;
-                while (++counter <=4)
-            {
-                Console.WriteLine("voer getal in ", counter);
+            //Opdracht A
+            Double counter = 0,
+                            numbers,
+                            largest = int.MinValue;
 
+            while (++counter <= 4)
+            {
+                Console.WriteLine("voer getal in", counter);
+                numbers = Convert.ToDouble(Console.ReadLine());
+
+                if (numbers > largest)
+                    largest = numbers;
             }
+            Console.ReadKey();
         }
     }
 }
