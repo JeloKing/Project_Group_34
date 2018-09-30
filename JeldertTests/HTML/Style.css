@@ -44,7 +44,7 @@
     float: left;
 }
 
-.style{
+/* .style {
     font-family: arial, sans-serif;
     font-size: 24px;
     color: #000000;
@@ -53,11 +53,23 @@
     text-align: left;
     letter-spacing: 0.2px;
 
+} */
+.font-small
+{
+    font-size: 20px;
+}
+.font-medium
+{
+    font-size: 30px;
+}
+.font-large
+{
+    font-size: 40px;
 }
 
 body {
     font-family: "Lato", sans-serif;
-    background-image: url("Konachan.jpg");
+    background-image: url("Sabaton.jpg");
     background-repeat: no-repeat;
     background-position: right top;
     margin-right: 200px;
@@ -106,4 +118,25 @@ body {
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
+}
+table, th, td
+{
+    border: 1px solid black;
+    width: 50%; 
+    border-spacing: 5px;
+    padding: 15px;
+}
+td:hover
+{
+    background-color: blueviolet
+}
+tr:nth-child(even)
+{
+    background-color: aqua;
+    color: black;
+}
+tr:nth-child(odd)
+{
+    background-color: chartreuse;
+    color: black;
 }

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>    
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+            body {font-family: Arial, Helvetica, sans-serif;}
+            * {box-sizing: border-box;}
+
+            input[type=text], select, textarea {
+                width: 100%;
+                padding: 12px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+                margin-top: 6px;
+                margin-bottom: 16px;
+                resize: vertical;
+            }
+
+            input[type=submit] {
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+            .container {
+                border-radius: 5px;
+                background-color: #f2f2f2;
+                padding: 20px;
+            }
+        </style>
+    </head>
+
+        <body>
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                        <a class="navbar-brand" href="#">Navbar</a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                    
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                            <a class="nav-link" href="index.html">Home </a>
+                            </li>
+                            <li class="nav-item active">
+                            <a class="nav-link" href="Contact.html">Contact <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="hobby.html">Hobby </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Personalia
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="cv.html">CV</a>
+                                <a class="dropdown-item" href="opdrachten.html">Opdrachten</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="reflectie.html">Reflecties</a>
+                            </div>
+                        </ul>
+                        </div>
+                    </nav>
+
+
+                <div class="container">
+                    <h3>Contact Form</h3>
+
+
+                <form action="/action_page.php">
+                    <label for="fname">Volledige Naam</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Je naam..">
+
+                    <label for="lname">E-Mail adres</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Je e-mail..">
+
+                    <label for="country">Onderwerp</label>
+                    <select id="country" name="country">
+                    <option value="australia">Contact</option>
+                    <option value="canada">Hobby</option>
+                    <option value="usa">Werk</option>
+                    <option value="usa">Opleiding</option>
+                    <option value="usa">Overig</option>
+                    </select>
+
+                    <label for="subject">Beschrijving</label>
+                    <textarea id="subject" name="subject" placeholder="Schrijf iets.." style="height:200px"></textarea>
+
+                    <input type="submit" value="versturen">
+                </form>
+                </div>
+
+        </body>
+</html>
