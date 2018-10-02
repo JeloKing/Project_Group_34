@@ -29,6 +29,7 @@
 //            Console.Clear();
 //            // Opracht C
 //            Console.WriteLine("geef een temperatuur in Celsius");
+
 //            int Temperatuur = Convert.ToInt32(Console.ReadLine());
 //            double Fahrenheit = (Temperatuur * 1.8 + 32);
 //            Console.SetCursorPosition(0, 1);
