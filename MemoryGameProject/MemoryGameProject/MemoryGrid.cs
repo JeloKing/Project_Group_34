@@ -18,6 +18,10 @@ namespace MemoryGameProject
 
         private int rows, cols;
 
+        private ImageSource firstPick;
+        private ImageSource secondPick;
+
+
         // Primary method of determining grid size and adding images to the grid
         public MemoryGrid(Grid grid, int rows, int cols)
         {
@@ -77,6 +81,10 @@ namespace MemoryGameProject
             }
         }
 
+        bool firstPickSelected = false;
+        bool secondPickSelected = false;
+
+        List<Image> selectedCards = new List<Image>();
 
         // Method to show a new image when a card has been clicked
         private void CardClick(object sender, MouseButtonEventArgs e)
@@ -85,7 +93,55 @@ namespace MemoryGameProject
             ImageSource front = (ImageSource)card.Tag;
             card.Source = front;
 
-            MessageBox.Show(Convert.ToString(front));
+            ImageSource cardBack = new BitmapImage(new Uri("images/backside.png", UriKind.Relative));
+
+            if(firstPickSelected == false && secondPickSelected == false)
+            {
+                firstPick = card.Source;
+                // MessageBox.Show(Convert.ToString("First pick: " + firstPick));
+                // MessageBox.Show(Convert.ToString("Second pick: " + secondPick));
+                firstPickSelected = true;
+
+                selectedCards.Add(card);
+
+            } else if(firstPickSelected == true && secondPickSelected == false)
+            {
+                secondPick = card.Source;
+                // MessageBox.Show(Convert.ToString("First pick: " + firstPick));
+                // MessageBox.Show(Convert.ToString("Second pick: " + secondPick));
+                secondPickSelected = true;
+
+                // MessageBox.Show(Convert.ToString("Card source" + card.Source));
+
+                selectedCards.Add(card);
+                // card.Source = new BitmapImage(new Uri("images/backside.png", UriKind.Relative));
+
+                if (Convert.ToString(firstPick) != Convert.ToString(secondPick))
+                {
+                    MessageBox.Show("not matched");
+                    firstPickSelected = false;
+                    secondPickSelected = false;
+
+                    foreach (var item in selectedCards)
+                    {
+                        // MessageBox.Show(Convert.ToString(item.Source));
+                        item.Source = cardBack;
+                    }
+
+                    selectedCards.Clear();
+
+                } else if (Convert.ToString(firstPick) == Convert.ToString(secondPick))
+                {
+                    MessageBox.Show("Matched");
+                    firstPickSelected = false;
+                    secondPickSelected = false;
+
+                    selectedCards.Clear();
+                }
+            }
+
+            // MessageBox.Show(Convert.ToString(front));
+                    
         }
 
 
