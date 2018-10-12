@@ -2,8 +2,8 @@
 <html lang="en">
     <head>
                 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+                <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script> -->
+                <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
                 <!--<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
                 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
                 <link rel="stylesheet" href="css files/login.css">
@@ -14,119 +14,160 @@
     </head>
 
 <!-- LOGIN FORM -->
-<div class="text-center" style="padding:50px 0">
-	<div class="logo">login</div>
-	<!-- Main Form -->
-	<div class="login-form-1">
-		<form id="login-form" class="text-left">
-			<div class="login-form-main-message"></div>
-			<div class="main-login-form">
-				<div class="login-group">
-					<div class="form-group">
-						<label for="lg_username" class="sr-only">Gebruikersnaam</label>
-						<input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="gebruikersnaam">
-					</div>
-					<div class="form-group">
-						<label for="lg_password" class="sr-only">Wachtwoord</label>
-						<input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="wachtwoord">
-					</div>
-					<div class="form-group login-group-checkbox">
-						<input type="checkbox" id="lg_remember" name="lg_remember">
-						<label for="lg_remember">onthoud</label>
-					</div>
-				</div>
-				<button type="button" onclick="location.href = 'index.html'" class="login-button"><i class="fa fa-chevron-right"></i></button>
-			</div>
-		</form>
-	</div>
-	<!-- end:Main Form -->
-</div>
-<!-- Code Input Form-->
-<div class="text-center" style="padding:50px 0">
-        <div class="logo">Uitnodigings code</div>
-<div class="login-form-1">
-		<form id="forgot-password-form" class="text-left">
-			<div class="etc-login-form">
-				<p>Hier kun je de code invoeren die je van het bruidspaar hebt gekregen.</p>
-			</div>
-			<div class="login-form-main-message"></div>
-			<div class="main-login-form">
-				<div class="login-group">
-					<div class="form-group">
-						<label for="fp_email" class="sr-only">Uitnodigings Code</label>
-						<input type="text" class="form-control" id="fp_email" name="fp_email" placeholder="Uitnodigings Code">
-					</div>
-				</div>
-				<button type="button" onclick="location.href = 'index.html'" class="login-button"><i class="fa fa-chevron-right"></i></button>
-			</div>
-		</form>
-	</div>
-<!-- REGISTRATION FORM -->
-<div class="text-center" style="padding:50px 0">
-	<div class="logo">registreer</div>
-	<!-- Main Form -->
-	<div class="login-form-1">
-		<form id="register-form" class="text-left">
-			<div class="login-form-main-message"></div>
-			<div class="main-login-form">
-				<div class="login-group">
-					<div class="form-group">
-						<label for="reg_username" class="sr-only">Email adres</label>
-						<input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="Gebruikersnaam">
-					</div>
-					<div class="form-group">
-						<label for="reg_password" class="sr-only">Wachtwoord</label>
-						<input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="wachtwoord">
-					</div>
-					<div class="form-group">
-						<label for="reg_password_confirm" class="sr-only">bevestig wachtwoord</label>
-						<input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="bevestig wachtwoord">
-					</div>
-					
-					<div class="form-group">
-						<label for="reg_email" class="sr-only">Email</label>
-						<input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">
-					</div>
-					<div class="form-group">
-						<label for="reg_fullname" class="sr-only">Volledige naam</label>
-						<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="volledige naam">
-					</div>
-					
-					<div class="form-group login-group-checkbox">
-						<input type="radio" class="" name="reg_gender" id="male" placeholder="gebruikersnaam">
-						<label for="male">man</label>
-						
-						<input type="radio" class="" name="reg_gender" id="female" placeholder="gebruikersnaam">
-						<label for="female">vrouw</label>
-					</div>
-				</div>
-				<button type="button" onclick="location.href = 'index.html'" class="login-button"><i class="fa fa-chevron-right"></i></button>
-			</div>
-		</form>
-	</div>
-	<!-- end:Main Form -->
-</div>
+<div class="container">
+	<div class="row">
 
-<!-- FORGOT PASSWORD FORM -->
-<div class="text-center" style="padding:50px 0">
-	<div class="logo">wachtwoord vergeten</div>
-	<!-- Main Form -->
-	<div class="login-form-1">
-		<form id="forgot-password-form" class="text-left">
-			<div class="etc-login-form">
-				<p>Als je hier je email adres invoert worden er instructies verzonden die vertellen hoe je je wachtwoord reset.</p>
-			</div>
-			<div class="login-form-main-message"></div>
-			<div class="main-login-form">
-				<div class="login-group">
-					<div class="form-group">
-						<label for="fp_email" class="sr-only">Email address</label>
-						<input type="text" class="form-control" id="fp_email" name="fp_email" placeholder="email adres">
+		<div class="col-md-12">
+				<div class="text-center" style="padding:50px 0">
+					<div class="login-form-1">
+						<div style="border-radius: 10px;" class="logo">login</div>
+							<form id="login-form" class="text-left">
+								<!-- <div class="login-form-main-message">
+									
+								</div> -->
+								<div class="main-login-form">
+									<div class="login-group">
+										<div class="form-group">
+											<label for="lg_username" class="sr-only">Gebruikersnaam</label>
+											<input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="gebruikersnaam">
+										</div>
+										<div class="form-group">
+											<label for="lg_password" class="sr-only">Wachtwoord</label>
+											<input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="wachtwoord">
+										</div>
+										<div class="form-group login-group-checkbox">
+											<input type="checkbox" id="lg_remember" name="lg_remember">
+											<label for="lg_remember">onthoud</label>
+										</div>
+									</div>
+									<button type="button" onclick="location.href = 'index.html'" class="login-button"><i class="fa fa-chevron-right"></i></button>
+								</div>
+							</form>
+						</div>
 					</div>
 				</div>
-				<button type="button" onclick="location.href = 'index.html'" class="login-button"><i class="fa fa-chevron-right"></i></button>
-			</div>
-		</form>
+
 	</div>
-	<!-- end:Main Form -->
+	
+
+
+	<!-- Code Input Form-->
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<div class="text-center" style="padding:50px 0">
+				<div class="login-form-1">
+					<div style="border-radius: 10px;" class="logo">Uitnodigings code</div>
+					<form id="forgot-password-form" class="text-left">
+						<div style="border-radius: 10px;" class="etc-login-form">
+							<p>Hier kun je de code invoeren die je van het bruidspaar hebt gekregen.</p>
+						</div>
+						<div class="login-form-main-message"></div>
+						<div class="main-login-form">
+							<div class="login-group">
+								<div class="form-group">
+									<label for="fp_email" class="sr-only">Uitnodigings Code</label>
+									<input type="text" class="form-control" id="fp_email" name="fp_email" placeholder="Uitnodigings Code">
+								</div>
+							</div>
+							<button type="button" onclick="location.href = 'index.html'" class="login-button"><i class="fa fa-chevron-right"></i></button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+
+
+	<!-- REGISTRATION FORM -->
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<div class="text-center" style="padding:50px 0">
+				<div class="login-form-1">
+						<div style="border-radius: 10px;" class="logo">registreer</div>
+					<form id="register-form" class="text-left">
+						<div class="login-form-main-message"></div>
+						<div class="main-login-form">
+							<div class="login-group">
+								<div class="form-group">
+									<label for="reg_username" class="sr-only">Email adres</label>
+									<input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="Gebruikersnaam">
+								</div>
+								<div class="form-group">
+									<label for="reg_password" class="sr-only">Wachtwoord</label>
+									<input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="wachtwoord">
+								</div>
+								<div class="form-group">
+									<label for="reg_password_confirm" class="sr-only">bevestig wachtwoord</label>
+									<input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="bevestig wachtwoord">
+								</div>
+								
+								<div class="form-group">
+									<label for="reg_email" class="sr-only">Email</label>
+									<input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">
+								</div>
+								<div class="form-group">
+									<label for="reg_fullname" class="sr-only">Volledige naam</label>
+									<input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="volledige naam">
+								</div>
+								
+								<div class="form-group login-group-checkbox">
+									<input type="radio" class="" name="reg_gender" id="male" placeholder="gebruikersnaam">
+									<label for="male">man</label>
+									
+									<input type="radio" class="" name="reg_gender" id="female" placeholder="gebruikersnaam">
+									<label for="female">vrouw</label>
+								</div>
+							</div>
+							<button type="button" onclick="location.href = 'index.html'" class="login-button"><i class="fa fa-chevron-right"></i></button>
+						</div>
+					</form>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	
+
+
+	<!-- FORGOT PASSWORD FORM -->
+	<div class="row">
+
+		<div class="col-md-12">
+
+			<div class="text-center" style="padding:50px 0">
+					<!-- Main Form -->
+					<div class="login-form-1">
+							<div style="border-radius: 10px;" class="logo">wachtwoord vergeten</div>
+						<form id="forgot-password-form" class="text-left">
+							<div style="border-radius: 10px;" class="etc-login-form">
+								<p>Als je hier je email adres invoert worden er instructies verzonden die vertellen hoe je je wachtwoord reset.</p>
+							</div>
+							<div class="login-form-main-message"></div>
+							<div class="main-login-form">
+								<div class="login-group">
+									<div class="form-group">
+										<label for="fp_email" class="sr-only">Email address</label>
+										<input type="text" class="form-control" id="fp_email" name="fp_email" placeholder="email adres">
+									</div>
+								</div>
+								<button type="button" onclick="location.href = 'index.html'" class="login-button"><i class="fa fa-chevron-right"></i></button>
+							</div>
+						</form>
+					</div>
+					<!-- end:Main Form -->
+				</div>
+
+		</div>
+
+	</div>
+
+	
 </div>
