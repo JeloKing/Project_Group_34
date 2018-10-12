@@ -81,10 +81,14 @@ namespace MemoryGameProject
             }
         }
 
+        // Booleans to check if a first and second picture have been clicked
         bool firstPickSelected = false;
         bool secondPickSelected = false;
 
+        // A list which will be populated with the clicked image
         List<Image> selectedCards = new List<Image>();
+        // A list with cards which have been recognized as paired, these will be used to see if the cards which have already been paired are selected again
+        List<ImageSource> pairedCards = new List<ImageSource>();
 
         // Method to show a new image when a card has been clicked
         private void CardClick(object sender, MouseButtonEventArgs e)
@@ -93,54 +97,77 @@ namespace MemoryGameProject
             ImageSource front = (ImageSource)card.Tag;
             card.Source = front;
 
+            // Set a variable for the cardback (could be removed, its only used once)
             ImageSource cardBack = new BitmapImage(new Uri("images/backside.png", UriKind.Relative));
 
+            // If the list pairedCards contains the clicked card Error message and return
+            if(pairedCards.Contains(card.Source))
+            {
+                MessageBox.Show("Card has already been selected");
+                return;
+            }
+
+            // If firstPickSelected and secondPickSelected equals false set firstPick source, set firstPickSelected to true, 
+            // add the selected card to the selectedCard list and disable the ability to click the same card twice
             if(firstPickSelected == false && secondPickSelected == false)
             {
+                // Set firstPick source
                 firstPick = card.Source;
-                // MessageBox.Show(Convert.ToString("First pick: " + firstPick));
-                // MessageBox.Show(Convert.ToString("Second pick: " + secondPick));
+                // Set firstPickSelected boolean to true
                 firstPickSelected = true;
 
+                // Add the selected card to the selectedCards list
                 selectedCards.Add(card);
+                // Disable the clicked card so it cant be clicked twice
+                card.IsEnabled = false;
 
             } else if(firstPickSelected == true && secondPickSelected == false)
             {
+                // Set secondPick card source
                 secondPick = card.Source;
-                // MessageBox.Show(Convert.ToString("First pick: " + firstPick));
-                // MessageBox.Show(Convert.ToString("Second pick: " + secondPick));
+                // Set secondPickSelected boolean to true
                 secondPickSelected = true;
-
-                // MessageBox.Show(Convert.ToString("Card source" + card.Source));
-
+                // Add the secondPick to the selectedCards list
                 selectedCards.Add(card);
-                // card.Source = new BitmapImage(new Uri("images/backside.png", UriKind.Relative));
 
+                // If firstPick and secondPick sources are not the same
                 if (Convert.ToString(firstPick) != Convert.ToString(secondPick))
                 {
+                    // Display messagebox
                     MessageBox.Show("not matched");
+                    // Set firstPickSelected and secondPickSelected to false so the player can pick 2 cards again
                     firstPickSelected = false;
                     secondPickSelected = false;
 
+                    // For each card in selectedCards set the image source equal to the backside again
                     foreach (var item in selectedCards)
                     {
-                        // MessageBox.Show(Convert.ToString(item.Source));
+                        // Revert card source back
                         item.Source = cardBack;
+                        // Enable the card to be clicked again
+                        item.IsEnabled = true;
                     }
 
+                    // Clear the selectedCards list of items 
                     selectedCards.Clear();
-
+                    
+                // Else if firstPick corresponds with secondPick
                 } else if (Convert.ToString(firstPick) == Convert.ToString(secondPick))
                 {
+                    // Show a message
                     MessageBox.Show("Matched");
+                    // Add the firstPick and secondPick to the pairedCards list
+                    pairedCards.Add(firstPick);
+                    pairedCards.Add(secondPick);
+
+                    // Set the firstPickSelected and secondPickSelected to false so the user can select cards again
                     firstPickSelected = false;
                     secondPickSelected = false;
 
+                    // Clear the selectedCards so the user can select new pairings
                     selectedCards.Clear();
                 }
             }
-
-            // MessageBox.Show(Convert.ToString(front));
                     
         }
 
