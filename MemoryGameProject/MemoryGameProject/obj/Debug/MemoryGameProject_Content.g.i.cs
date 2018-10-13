@@ -9,13 +9,5 @@
 //------------------------------------------------------------------------------
 
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/1.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/2.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/3.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/4.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/5.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/6.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/7.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/8.jpg")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/backside.png")]
 
 

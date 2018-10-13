@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Threading;
 
 namespace MemoryGameProject
 {
@@ -51,6 +52,8 @@ namespace MemoryGameProject
             }
         }
 
+        private bool clickable = true;
+
         // Method to add images to the already made grid
         private void addImage()
         {
@@ -68,6 +71,8 @@ namespace MemoryGameProject
 
                     // On click execute method Cardclick
                     ImageBack.MouseDown += new MouseButtonEventHandler(CardClick);
+
+                    
                     ImageBack.Tag = images.First();
 
                     images.RemoveAt(0);
@@ -80,6 +85,7 @@ namespace MemoryGameProject
                 }
             }
         }
+
 
         // Booleans to check if a first and second picture have been clicked
         bool firstPickSelected = false;
@@ -134,9 +140,9 @@ namespace MemoryGameProject
                 if (Convert.ToString(firstPick) != Convert.ToString(secondPick))
                 {
                     // Display messagebox
-                    MessageBox.Show("not matched");
+                    // MessageBox.Show("not matched");
                     // Set firstPickSelected and secondPickSelected to false so the player can pick 2 cards again
-                    firstPickSelected = false;
+                    /* firstPickSelected = false;
                     secondPickSelected = false;
 
                     // For each card in selectedCards set the image source equal to the backside again
@@ -149,13 +155,41 @@ namespace MemoryGameProject
                     }
 
                     // Clear the selectedCards list of items 
-                    selectedCards.Clear();
-                    
+                    selectedCards.Clear(); */
+
+                    DispatcherTimer timer = null;
+                    timer = new DispatcherTimer();
+                    timer.Interval = TimeSpan.FromMilliseconds(1500);
+                    timer.Tick += new EventHandler(timer_Tick);
+                    timer.Start();
+
+                    // bool IsHitTestVisible = false;
+
+                    // var peter = UIElement.IsHitTestVisibleProperty;
+
+                    grid.IsEnabled = false;
+
+                    void timer_Tick(object time, EventArgs f)
+                    {
+                        foreach (var item in selectedCards)
+                        {
+                            // Revert card source back
+                            item.Source = cardBack;
+                            // Enable the card to be clicked again
+                            item.IsEnabled = true;
+                        }
+                        timer.Stop();
+                        grid.IsEnabled = true;
+                    }
+
+                    firstPickSelected = false;
+                    secondPickSelected = false;
+                  
                 // Else if firstPick corresponds with secondPick
                 } else if (Convert.ToString(firstPick) == Convert.ToString(secondPick))
                 {
                     // Show a message
-                    MessageBox.Show("Matched");
+                    // MessageBox.Show("Matched");
                     // Add the firstPick and secondPick to the pairedCards list
                     pairedCards.Add(firstPick);
                     pairedCards.Add(secondPick);
