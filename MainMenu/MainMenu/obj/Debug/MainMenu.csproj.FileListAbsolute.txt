@@ -1,0 +1,15 @@
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\bin\Debug\MainMenu.exe.config
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\bin\Debug\MainMenu.exe
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\bin\Debug\MainMenu.pdb
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\MainMenu.csprojAssemblyReference.cache
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\MainWindow.g.cs
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\App.g.cs
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\MainMenu_MarkupCompile.cache
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\MainMenu_MarkupCompile.lref
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\MainWindow.baml
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\MainMenu.g.resources
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\MainMenu.Properties.Resources.resources
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\MainMenu.csproj.GenerateResource.cache
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\MainMenu.csproj.CoreCompileInputs.cache
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\MainMenu.exe
+C:\Users\jdewo\source\repos\MainMenu\MainMenu\obj\Debug\MainMenu.pdb
