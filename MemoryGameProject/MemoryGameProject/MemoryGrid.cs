@@ -218,7 +218,7 @@ namespace MemoryGameProject
             {
                 int imageNmr = i % 8 + 1;
 
-                ImageSource source = new BitmapImage(new Uri("images/" + imageNmr + ".jpg", UriKind.Relative));
+                ImageSource source = new BitmapImage(new Uri("images/memory_fe/" + imageNmr + ".png", UriKind.Relative));
                 images.Add(source);
             }
 

@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GameViewModel.cs" />
+    <Compile Include="StartMenuViewModel.cs" />
+    <Page Include="MainMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,7 +69,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Card.cs" />
+    <Compile Include="MainMenuView.xaml.cs">
+      <DependentUpon>MainMenuView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -97,17 +105,24 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\2.jpg" />
-    <Resource Include="images\3.jpg" />
-    <Resource Include="images\4.jpg" />
-    <Resource Include="images\5.jpg" />
-    <Resource Include="images\6.jpg" />
-    <Resource Include="images\7.jpg" />
-    <Resource Include="images\8.jpg" />
-    <Resource Include="images\backside.png" />
+    <Resource Include="images\memory_fe\1.png" />
+    <Resource Include="images\memory_fe\2.png" />
+    <Resource Include="images\memory_fe\3.png" />
+    <Resource Include="images\memory_fe\4.png" />
+    <Resource Include="images\memory_fe\5.png" />
+    <Resource Include="images\memory_fe\6.png" />
+    <Resource Include="images\memory_fe\7.png" />
+    <Resource Include="images\memory_fe\8.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\1.jpg" />
+    <Resource Include="images\backside.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\main_menu\fe.png" />
+    <Resource Include="images\main_menu\se.png" />
+    <Resource Include="images\main_menu\sh.png" />
+    <Resource Include="images\main_menu\sw.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

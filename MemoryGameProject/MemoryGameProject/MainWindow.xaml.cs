@@ -27,10 +27,11 @@ namespace MemoryGameProject
         // Maak de grid
         MemoryGrid grid;
 
-
         public MainWindow()
         {
             InitializeComponent();
+            // DataContext = new StartMenuViewModel(this);
+
             // Roep de class MemoryGrid op om de grid voor het spel te maken, met als variablen het aantal rijen en collomen
             grid = new MemoryGrid(GameGrid, nr_of_rows, nr_of_cols);
         }

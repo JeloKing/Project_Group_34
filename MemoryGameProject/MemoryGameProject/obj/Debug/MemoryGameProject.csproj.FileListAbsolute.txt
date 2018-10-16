@@ -13,3 +13,6 @@ D:\Programeren\C#\MemoryGame\Memory Project group 34\MemoryGameProject\MemoryGam
 D:\Programeren\C#\MemoryGame\Memory Project group 34\MemoryGameProject\MemoryGameProject\obj\Debug\MemoryGameProject.csproj.CoreCompileInputs.cache
 D:\Programeren\C#\MemoryGame\Memory Project group 34\MemoryGameProject\MemoryGameProject\obj\Debug\MemoryGameProject.exe
 D:\Programeren\C#\MemoryGame\Memory Project group 34\MemoryGameProject\MemoryGameProject\obj\Debug\MemoryGameProject.pdb
+D:\Programeren\C#\MemoryGame\Memory Project group 34\MemoryGameProject\MemoryGameProject\obj\Debug\MainMenuView.g.cs
+D:\Programeren\C#\MemoryGame\Memory Project group 34\MemoryGameProject\MemoryGameProject\obj\Debug\MainMenuView.baml
+D:\Programeren\C#\MemoryGame\Memory Project group 34\MemoryGameProject\MemoryGameProject\obj\Debug\GeneratedInternalTypeHelper.g.cs
