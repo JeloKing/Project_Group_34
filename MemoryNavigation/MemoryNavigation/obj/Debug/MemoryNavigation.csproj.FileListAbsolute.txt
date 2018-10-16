@@ -1,0 +1,38 @@
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.csprojAssemblyReference.cache
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\App.g.cs
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation_MarkupCompile.cache
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\MainWindow.g.cs
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation_MarkupCompile.lref
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\bin\Debug\MemoryNavigation.exe.config
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\bin\Debug\MemoryNavigation.exe
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\bin\Debug\MemoryNavigation.pdb
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\MainWindow.baml
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.g.resources
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.Properties.Resources.resources
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.csproj.GenerateResource.cache
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.csproj.CoreCompileInputs.cache
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.exe
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.pdb
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\Views\StartMenuView.g.cs
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\Views\StartMenuView.baml
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\bin\Debug\MemoryNavigation.exe.config
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\bin\Debug\MemoryNavigation.exe
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\bin\Debug\MemoryNavigation.pdb
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.csprojAssemblyReference.cache
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\MainWindow.g.cs
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\Views\StartMenuView.g.cs
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\App.g.cs
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation_MarkupCompile.cache
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation_MarkupCompile.lref
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\MainWindow.baml
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\Views\StartMenuView.baml
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.g.resources
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.Properties.Resources.resources
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.csproj.GenerateResource.cache
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.csproj.CoreCompileInputs.cache
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.exe
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation Backup\MemoryNavigation\MemoryNavigation\obj\Debug\MemoryNavigation.pdb
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\Views\MainMenuView.g.cs
+D:\Programeren\C#\MemoryGame\MemoryGame Navigation\MemoryNavigation\MemoryNavigation\obj\Debug\Views\MainMenuView.baml
