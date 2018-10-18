@@ -1,0 +1,25 @@
+﻿<Page x:Class="MemoryProject.PreGameSelectViewPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MemoryProject"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PreGameSelectViewPage">
+
+    <Grid Background="White">
+
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Speler 1" VerticalAlignment="Top" Margin="335,143,0,0"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Speler 2" VerticalAlignment="Top" Margin="336,204,0,0"/>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="335,164,0,0" Name="player1"/>
+        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="335,225,0,0" Name="player2"/>
+        <Button Content="4x4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Margin="729,144,0,0" Height="43" Click="Play_Game_Grid4"/>
+        <Button Content="5x5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="43" Margin="729,204,0,0"/>
+        <Button Content="6x6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="43" Margin="729,267,0,0"/>
+
+
+        <Frame x:Name="PreGameSelectView"/>
+        
+    </Grid>
+</Page>
