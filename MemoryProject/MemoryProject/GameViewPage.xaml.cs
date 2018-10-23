@@ -27,9 +27,11 @@ namespace MemoryProject
         MemoryGrid grid;
 
 
-        public GameViewPage(string player1input, string player2input)
+        public GameViewPage(string player1input, string player2input, string themeSelected)
         {
             InitializeComponent();
+
+            selectedTheme.Text = themeSelected;
 
             player1name.Text = player1input;
             player2name.Text = player2input;
@@ -40,17 +42,33 @@ namespace MemoryProject
             TextBlock player1naam = player1name;
             TextBlock player2naam = player2name;
 
-
             // string player1points = player1score.Text;
-
-
 
             // int player1points = Convert.ToInt32(player1score.Text);
             // int player2points = Convert.ToInt32(player2score.Text);
 
             // MessageBox.Show(player1points);
 
-            grid = new MemoryGrid(GameGrid, nr_of_rows, nr_of_cols, player1points, player2points, player1naam, player2naam);
+            grid = new MemoryGrid(GameGrid, nr_of_rows, nr_of_cols, player1points, player2points, player1naam, player2naam, themeSelected);
+        }
+
+        public void ResetGame(object sender, RoutedEventArgs e)
+        {
+            string themeSelected = selectedTheme.Text;
+
+            player1score.Text = "0";
+            player2score.Text = "0";
+
+            TextBlock player1points = player1score;
+            TextBlock player2points = player2score;
+
+            TextBlock player1naam = player1name;
+            TextBlock player2naam = player2name;
+
+            GameGrid.ColumnDefinitions.Clear();
+            GameGrid.RowDefinitions.Clear();
+
+            grid = new MemoryGrid(GameGrid, nr_of_rows, nr_of_cols, player1points, player2points, player1naam, player2naam, themeSelected);
         }
     }
 }

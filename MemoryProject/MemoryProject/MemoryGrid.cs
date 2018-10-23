@@ -26,8 +26,10 @@ namespace MemoryProject
         private ImageSource firstPick;
         private ImageSource secondPick;
 
+        private string themeSelected;
+
         // Primary method of determining grid size and adding images to the grid
-        public MemoryGrid(Grid grid, int rows, int cols, TextBlock player1score, TextBlock player2score, TextBlock player1name, TextBlock player2name)
+        public MemoryGrid(Grid grid, int rows, int cols, TextBlock player1score, TextBlock player2score, TextBlock player1name, TextBlock player2name, string themeSelected)
         {
             // Make sure that the computer knows what the grid, rows, and cols are
             this.grid = grid;
@@ -39,6 +41,8 @@ namespace MemoryProject
 
             this.player1name = player1name;
             this.player2name = player2name;
+
+            this.themeSelected = themeSelected;
 
             // player1name.Text = "Zeus";
 
@@ -293,7 +297,7 @@ namespace MemoryProject
             {
                 int imageNmr = i % 8 + 1;
 
-                ImageSource source = new BitmapImage(new Uri("images/memory_fe/" + imageNmr + ".png", UriKind.Relative));
+                ImageSource source = new BitmapImage(new Uri("images/" + themeSelected + "/" + imageNmr + ".png", UriKind.Relative));
                 images.Add(source);
             }
 

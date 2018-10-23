@@ -20,9 +20,12 @@ namespace MemoryProject
     /// </summary>
     public partial class PreGameSelectViewPage : Page
     {
-        public PreGameSelectViewPage()
+        public PreGameSelectViewPage(string ThemeSelected)
         {
             InitializeComponent();
+            // MessageBox.Show(ThemeSelected);
+
+            SelectedTheme.Text = ThemeSelected;
         }
 
         public void Play_Game_Grid4(object sender, RoutedEventArgs e)
@@ -30,7 +33,10 @@ namespace MemoryProject
             string player1Name = player1.Text;
             string player2Name = player2.Text;
 
-            PreGameSelectView.Content = new GameViewPage(player1Name, player2Name);
+            // Theme selected in the MainWindow
+            string themeSelected = SelectedTheme.Text;
+
+            PreGameSelectView.Content = new GameViewPage(player1Name, player2Name, themeSelected);
             // MessageBox.Show("Gameview time");
         }
     }

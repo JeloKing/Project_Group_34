@@ -15,7 +15,7 @@
 
         </Grid>
 
-        <Grid x:Name="PlayerGrid" Background="White" Margin="715,0,0,-0.4">
+        <Grid x:Name="PlayerGrid" Background="White" Margin="715,0,0,-0.4" HorizontalAlignment="Right">
 
             <!-- Player 1 -->
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="10,10,0,0" Name="player1name" Width="65"/>
@@ -25,10 +25,12 @@
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="10,86,0,0" Name="player2name" Width="65"/>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="9,107,0,0" Name="player2score" x:FieldModifier="public" Width="65" TextAlignment="Center"/>
 
+            <Button x:Name="ResetGameButton" Margin="15,409,10.2,21" Width="50" Height="20" Click="ResetGame">Reset</Button>
+        </Grid>
 
-            </Grid>
+        <Frame x:Name="GameViewPageView"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Visibility="Hidden" Name="selectedTheme"/>
+
+
     </Grid>
-
-
-
 </Page>
