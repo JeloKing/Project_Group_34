@@ -15,8 +15,8 @@
         <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="335,164,0,0" Name="player1"/>
         <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="335,225,0,0" Name="player2"/>
         <Button Content="4x4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Margin="729,144,0,0" Height="43" Click="Play_Game_Grid4"/>
-        <Button Content="5x5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="43" Margin="729,204,0,0"/>
-        <Button Content="6x6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="43" Margin="729,267,0,0"/>
+        <Button Content="5x5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="43" Margin="729,204,0,0" Click="Play_Game_Grid5"/>
+        <Button Content="6x6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="43" Margin="729,267,0,0" Click="Play_Game_Grid6"/>
 
 
         <Frame x:Name="PreGameSelectView"/>

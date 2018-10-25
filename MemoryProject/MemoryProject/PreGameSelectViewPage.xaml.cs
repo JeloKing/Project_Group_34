@@ -36,8 +36,38 @@ namespace MemoryProject
             // Theme selected in the MainWindow
             string themeSelected = SelectedTheme.Text;
 
-            PreGameSelectView.Content = new GameViewPage(player1Name, player2Name, themeSelected);
-            // MessageBox.Show("Gameview time");
+            int nr_of_cols = 4;
+            int nr_of_rows = 4;
+
+            PreGameSelectView.Content = new GameViewPage(player1Name, player2Name, themeSelected, nr_of_cols, nr_of_rows);
+        }
+
+        public void Play_Game_Grid5(object sender, RoutedEventArgs e)
+        {
+            string player1Name = player1.Text;
+            string player2Name = player2.Text;
+
+            // Theme selected in the MainWindow
+            string themeSelected = SelectedTheme.Text;
+
+            int nr_of_cols = 5;
+            int nr_of_rows = 5;
+
+            PreGameSelectView.Content = new GameViewPage(player1Name, player2Name, themeSelected, nr_of_cols, nr_of_rows);
+        }
+
+        public void Play_Game_Grid6(object sender, RoutedEventArgs e)
+        {
+            string player1Name = player1.Text;
+            string player2Name = player2.Text;
+
+            // Theme selected in the MainWindow
+            string themeSelected = SelectedTheme.Text;
+
+            int nr_of_cols = 6;
+            int nr_of_rows = 6;
+
+            PreGameSelectView.Content = new GameViewPage(player1Name, player2Name, themeSelected, nr_of_cols, nr_of_rows);
         }
     }
 }

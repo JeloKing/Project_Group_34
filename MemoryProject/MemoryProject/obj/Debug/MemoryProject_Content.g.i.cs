@@ -8,9 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/main_menu/fe.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/main_menu/se.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/main_menu/sh.png")]
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/main_menu/sw.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/blankcard.png")]
 
 

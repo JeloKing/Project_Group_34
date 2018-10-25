@@ -120,14 +120,35 @@
     <Resource Include="images\fire emblem\8.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="images\backside.png" />
+    <Resource Include="images\fire emblem\10.png" />
+    <Resource Include="images\fire emblem\11.png" />
+    <Resource Include="images\fire emblem\12.png" />
+    <Resource Include="images\fire emblem\9.png" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="images\main_menu\fe.png" />
     <Resource Include="images\main_menu\se.png" />
     <Resource Include="images\main_menu\sh.png" />
     <Resource Include="images\main_menu\sw.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\backside.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\fire emblem\fire emblem backside.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\fire emblem\13.png" />
+    <Resource Include="images\fire emblem\14.png" />
+    <Resource Include="images\fire emblem\15.png" />
+    <Resource Include="images\fire emblem\16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\fire emblem\17.png" />
+    <Resource Include="images\fire emblem\18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\blankcard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

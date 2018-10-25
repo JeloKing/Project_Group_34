@@ -29,7 +29,12 @@ namespace MemoryProject
         private string themeSelected;
 
         // Primary method of determining grid size and adding images to the grid
-        public MemoryGrid(Grid grid, int rows, int cols, TextBlock player1score, TextBlock player2score, TextBlock player1name, TextBlock player2name, string themeSelected)
+        public MemoryGrid()
+        {
+            
+        }
+
+        public void MemoryGridInitializer(Grid grid, int rows, int cols, TextBlock player1score, TextBlock player2score, TextBlock player1name, TextBlock player2name, string themeSelected)
         {
             // Make sure that the computer knows what the grid, rows, and cols are
             this.grid = grid;
@@ -43,18 +48,6 @@ namespace MemoryProject
             this.player2name = player2name;
 
             this.themeSelected = themeSelected;
-
-            // player1name.Text = "Zeus";
-
-            // MessageBox.Show(Convert.ToString(player1name));
-            // MessageBox.Show(Convert.ToString(player2name));
-
-
-            // MessageBox.Show("Player1points: " + player1points);
-
-            // MessageBox.Show(Convert.ToString(player1score));
-
-            // player1score.Text = "peter";
 
             // Set player1 to green
             player1name.Background = Brushes.Green;
@@ -81,12 +74,18 @@ namespace MemoryProject
             }
         }
 
-        // private bool clickable = true;
-
         // Method to add images to the already made grid
         private void addImage()
         {
             List<ImageSource> images = GetImagesList();
+
+            ImageSource blankCard = new BitmapImage(new Uri("images/blankcard.png", UriKind.Relative));
+            images.Insert(12, blankCard);
+
+            /* foreach (var item in images)
+            {
+                MessageBox.Show("List: " + item);
+            } */
 
             for (int row = 0; row < rows; row++)
             {
@@ -96,21 +95,36 @@ namespace MemoryProject
                     Image ImageBack = new Image();
 
                     // Set the image for Imageback equal to the specified image between the parantheses (UriKind.Relative makes the program only search the directory)
-                    ImageBack.Source = new BitmapImage(new Uri("images/backside.png", UriKind.Relative));
+                    ImageBack.Source = new BitmapImage(new Uri("images/" + themeSelected + "/" + themeSelected + " backside.png", UriKind.Relative));
 
                     // On click execute method Cardclick
                     ImageBack.MouseDown += new MouseButtonEventHandler(CardClick);
-
 
                     ImageBack.Tag = images.First();
 
                     images.RemoveAt(0);
 
-                    // Add the backside image to all rows and cols
-                    Grid.SetColumn(ImageBack, col);
-                    Grid.SetRow(ImageBack, row);
-                    grid.Children.Add(ImageBack);
+                    if (cols * cols == 25)
+                    {
+                        if (row == 2 && col == 2)
+                        {
+                            // MessageBox.Show("The middle");
+                        }
+                        else
+                        {
+                            // Add the backside image to all rows and cols
+                            Grid.SetColumn(ImageBack, col);
+                            Grid.SetRow(ImageBack, row);
+                            grid.Children.Add(ImageBack);
+                        }
+                    } else
+                    {
+                        Grid.SetColumn(ImageBack, col);
+                        Grid.SetRow(ImageBack, row);
+                        grid.Children.Add(ImageBack);
+                    }
 
+                    
                 }
             }
         }
@@ -131,7 +145,6 @@ namespace MemoryProject
         // A list with cards which have been recognized as paired, these will be used to see if the cards which have already been paired are selected again
         List<ImageSource> pairedCards = new List<ImageSource>();
 
-        
 
         // Method to show a new image when a card has been clicked
         private void CardClick(object sender, MouseButtonEventArgs e)
@@ -141,7 +154,7 @@ namespace MemoryProject
             card.Source = front;
 
             // Set a variable for the cardback (could be removed, its only used once)
-            ImageSource cardBack = new BitmapImage(new Uri("images/backside.png", UriKind.Relative));
+            ImageSource cardBack = new BitmapImage(new Uri("images/" + themeSelected + "/" + themeSelected + " backside.png", UriKind.Relative));
 
             // If the list pairedCards contains the clicked card Error message and return
             if (pairedCards.Contains(card.Source))
@@ -287,19 +300,53 @@ namespace MemoryProject
 
         private List<ImageSource> GetImagesList()
         {
+            int amountOfCards;
+
             // Generate a random number
             Random rng = new Random();
 
             List<ImageSource> images = new List<ImageSource>();
 
-            // Loop through 16 times to generate 2 sets of 8 images to add as an image source for the front of a card
-            for (int i = 0; i < 16; i++)
+            // MessageBox.Show(Convert.ToString(cols * cols));
+
+            amountOfCards = cols * cols;
+
+            if (cols * cols == 25)
             {
+                amountOfCards = 24;
+            }
+
+
+            // Loop through 16 times to generate 2 sets of 8 images to add as an image source for the front of a card
+            for (int i = 0; i < amountOfCards; i++)
+            {
+                // MessageBox.Show(Convert.ToString(5 * 5 / 2));
+
                 int imageNmr = i % 8 + 1;
+
+                if (cols * cols == 25)
+                {
+                    // MessageBox.Show("test");
+                    imageNmr = i % 12 + 1;
+                }
+
+                if (cols * cols == 36)
+                {
+                    imageNmr = i % 18 + 1;
+                }
+
+                // ImageSource blankCard = new BitmapImage(new Uri("images/" + themeSelected + "/" + themeSelected + "backside.png", UriKind.Relative));
+                // images.Add(blankCard);
+            
 
                 ImageSource source = new BitmapImage(new Uri("images/" + themeSelected + "/" + imageNmr + ".png", UriKind.Relative));
                 images.Add(source);
             }
+
+            /* foreach (var item in images)
+            {
+                MessageBox.Show("Images list: " + item);
+            } */
 
             // Returns a shuffeld images list based on the random number generated earlier
             return images.OrderBy(a => rng.Next()).ToList();

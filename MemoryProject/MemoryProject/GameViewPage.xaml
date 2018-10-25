@@ -25,11 +25,15 @@
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="10,86,0,0" Name="player2name" Width="65"/>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="9,107,0,0" Name="player2score" x:FieldModifier="public" Width="65" TextAlignment="Center"/>
 
+            <Button x:Name="SaveAndQuitGame" Margin="0,359,0,71" Height="20" Click="SaveQuitGame">Save and Quit</Button>
             <Button x:Name="ResetGameButton" Margin="15,409,10.2,21" Width="50" Height="20" Click="ResetGame">Reset</Button>
         </Grid>
 
         <Frame x:Name="GameViewPageView"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Visibility="Hidden" Name="selectedTheme"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Visibility="Hidden" Name="selectedTheme"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Visibility="Hidden" Name="nrOfCols"/>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Visibility="Hidden" Name="nrOfRows"/>
+
 
 
     </Grid>

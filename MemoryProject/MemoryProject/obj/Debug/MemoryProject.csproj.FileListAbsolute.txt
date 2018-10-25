@@ -20,7 +20,6 @@ D:\Programeren\C#\MemoryGame\Memory Project 17-10-2018\MemoryProject\MemoryProje
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\bin\Debug\MemoryProject.exe.config
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\bin\Debug\MemoryProject.exe
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\bin\Debug\MemoryProject.pdb
-D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.csprojAssemblyReference.cache
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\obj\Debug\GameViewPage.g.cs
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\obj\Debug\MainWindow.g.cs
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\obj\Debug\PreGameSelectViewPage.g.cs
