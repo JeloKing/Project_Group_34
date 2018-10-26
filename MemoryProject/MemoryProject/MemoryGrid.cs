@@ -79,13 +79,12 @@ namespace MemoryProject
         {
             List<ImageSource> images = GetImagesList();
 
-            ImageSource blankCard = new BitmapImage(new Uri("images/blankcard.png", UriKind.Relative));
-            images.Insert(12, blankCard);
-
-            /* foreach (var item in images)
+            if (cols * cols == 25)
             {
-                MessageBox.Show("List: " + item);
-            } */
+                ImageSource blankCard = new BitmapImage(new Uri("images/blankcard.png", UriKind.Relative));
+                images.Insert(12, blankCard);
+            }
+
 
             for (int row = 0; row < rows; row++)
             {
@@ -145,10 +144,21 @@ namespace MemoryProject
         // A list with cards which have been recognized as paired, these will be used to see if the cards which have already been paired are selected again
         List<ImageSource> pairedCards = new List<ImageSource>();
 
+        int sizeOfList;
+        int amountOfCards;
 
         // Method to show a new image when a card has been clicked
         private void CardClick(object sender, MouseButtonEventArgs e)
         {
+            sizeOfList = pairedCards.Count();
+
+            amountOfCards = cols * cols;
+
+            if (cols * cols == 25)
+            {
+                amountOfCards = 24;
+            }
+
             Image card = (Image)sender;
             ImageSource front = (ImageSource)card.Tag;
             card.Source = front;
@@ -190,23 +200,6 @@ namespace MemoryProject
                 // If firstPick and secondPick sources are not the same
                 if (Convert.ToString(firstPick) != Convert.ToString(secondPick))
                 {
-                    // Display messagebox
-                    // MessageBox.Show("not matched");
-                    // Set firstPickSelected and secondPickSelected to false so the player can pick 2 cards again
-                    /* firstPickSelected = false;
-                    secondPickSelected = false;
-
-                    // For each card in selectedCards set the image source equal to the backside again
-                    foreach (var item in selectedCards)
-                    {
-                        // Revert card source back
-                        item.Source = cardBack;
-                        // Enable the card to be clicked again
-                        item.IsEnabled = true;
-                    }
-
-                    // Clear the selectedCards list of items 
-                    selectedCards.Clear(); */
 
                     DispatcherTimer timer = null;
                     timer = new DispatcherTimer();
@@ -214,10 +207,6 @@ namespace MemoryProject
                     timer.Tick += new EventHandler(timer_Tick);
                     timer.Start();
 
-
-                    // bool IsHitTestVisible = false;
-
-                    // var peter = UIElement.IsHitTestVisibleProperty;
 
                     grid.IsEnabled = false;
 
@@ -258,14 +247,10 @@ namespace MemoryProject
                         player2name.Background = Brushes.White;
                     }
 
-                    
- 
                     // Else if firstPick corresponds with secondPick
                 }
                 else if (Convert.ToString(firstPick) == Convert.ToString(secondPick))
                 {
-                    // Show a message
-                    // MessageBox.Show("Matched");
                     // Add the firstPick and secondPick to the pairedCards list
                     pairedCards.Add(firstPick);
                     pairedCards.Add(secondPick);
@@ -283,14 +268,24 @@ namespace MemoryProject
                         player1score.Text = Convert.ToString(player1points);
                         // player1Turn = false;
                         // player2Turn = true;
+
                     } else if(player1Turn == false && player2Turn == true)
                     {
                         player2points = player2points + 10;
                         player2score.Text = Convert.ToString(player2points);
                     }
 
-                    // player1points = player1points + 10;
-                    // player1score.Text = Convert.ToString(player1points);
+                    if (sizeOfList == amountOfCards - 2)
+                    {
+                        if (player1points > player2points)
+                        {
+                            MessageBox.Show("Player 1 wins with: " + player1points + " points!");
+                        } else if (player2points > player1points)
+                        {
+                            MessageBox.Show("Player 2 wins with: " + player2points + " points!");
+                        }
+                    }
+                    // MessageBox.Show("Paired cards count: " + sizeOfList);
                     
                 }
             }
@@ -300,14 +295,12 @@ namespace MemoryProject
 
         private List<ImageSource> GetImagesList()
         {
-            int amountOfCards;
+            
 
             // Generate a random number
             Random rng = new Random();
 
             List<ImageSource> images = new List<ImageSource>();
-
-            // MessageBox.Show(Convert.ToString(cols * cols));
 
             amountOfCards = cols * cols;
 
@@ -320,13 +313,11 @@ namespace MemoryProject
             // Loop through 16 times to generate 2 sets of 8 images to add as an image source for the front of a card
             for (int i = 0; i < amountOfCards; i++)
             {
-                // MessageBox.Show(Convert.ToString(5 * 5 / 2));
 
                 int imageNmr = i % 8 + 1;
 
                 if (cols * cols == 25)
                 {
-                    // MessageBox.Show("test");
                     imageNmr = i % 12 + 1;
                 }
 
@@ -334,19 +325,10 @@ namespace MemoryProject
                 {
                     imageNmr = i % 18 + 1;
                 }
-
-                // ImageSource blankCard = new BitmapImage(new Uri("images/" + themeSelected + "/" + themeSelected + "backside.png", UriKind.Relative));
-                // images.Add(blankCard);
             
-
                 ImageSource source = new BitmapImage(new Uri("images/" + themeSelected + "/" + imageNmr + ".png", UriKind.Relative));
                 images.Add(source);
             }
-
-            /* foreach (var item in images)
-            {
-                MessageBox.Show("Images list: " + item);
-            } */
 
             // Returns a shuffeld images list based on the random number generated earlier
             return images.OrderBy(a => rng.Next()).ToList();

@@ -35,3 +35,4 @@ D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.csproj.CoreCompileInputs.cache
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.exe
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.pdb
+D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.csprojAssemblyReference.cache
