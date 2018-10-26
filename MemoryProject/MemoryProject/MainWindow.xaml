@@ -55,6 +55,7 @@
             <Grid Margin="0,0,0.2,377.8">
                 <TextBlock HorizontalAlignment="Left" Margin="30,10,0,0" TextWrapping="Wrap" Text="Highscores" VerticalAlignment="Top" FontWeight="Bold"/>
                 <TextBlock HorizontalAlignment="Left" Margin="23,19,0,0" TextWrapping="Wrap" Text="----------------" VerticalAlignment="Top" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,40,0,-366.8" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="104" Height="369" Name="HighScoresList"/>
             </Grid>
         </Grid>
 
