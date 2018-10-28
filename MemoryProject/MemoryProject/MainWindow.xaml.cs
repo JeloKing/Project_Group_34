@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,10 @@ namespace MemoryProject
         public MainWindow()
         {
             InitializeComponent();
+
+            StreamReader sr = new StreamReader("HighScores.txt");
+            HighScoresList.Text = sr.ReadToEnd();
+            sr.Close();
         }
 
         string ThemeSelected;

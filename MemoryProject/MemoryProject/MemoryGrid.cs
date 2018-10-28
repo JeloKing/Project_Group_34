@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Threading;
 
 namespace MemoryProject
 {
+    // [Serializable()]
     public class MemoryGrid
     {
         // Make the grid, rows and cols available for use (these are passed by the MainWindow)
@@ -31,7 +33,7 @@ namespace MemoryProject
         // Primary method of determining grid size and adding images to the grid
         public MemoryGrid()
         {
-            
+
         }
 
         public void MemoryGridInitializer(Grid grid, int rows, int cols, TextBlock player1score, TextBlock player2score, TextBlock player1name, TextBlock player2name, string themeSelected)
@@ -58,7 +60,7 @@ namespace MemoryProject
             addImage();
         }
 
-        
+
 
         // Make the specified amount of rows and cols
         private void InitializeGrid()
@@ -116,14 +118,15 @@ namespace MemoryProject
                             Grid.SetRow(ImageBack, row);
                             grid.Children.Add(ImageBack);
                         }
-                    } else
+                    }
+                    else
                     {
                         Grid.SetColumn(ImageBack, col);
                         Grid.SetRow(ImageBack, row);
                         grid.Children.Add(ImageBack);
                     }
 
-                    
+
                 }
             }
         }
@@ -146,6 +149,8 @@ namespace MemoryProject
 
         int sizeOfList;
         int amountOfCards;
+
+        List<string> scoreList;
 
         // Method to show a new image when a card has been clicked
         private void CardClick(object sender, MouseButtonEventArgs e)
@@ -228,7 +233,7 @@ namespace MemoryProject
 
 
                     // Switch between users
-                    if(player1Turn == true && player2Turn == false)
+                    if (player1Turn == true && player2Turn == false)
                     {
                         // player1points = player1points - 5;
                         player1Turn = false;
@@ -237,7 +242,8 @@ namespace MemoryProject
                         player1name.Background = Brushes.White;
                         player2name.Background = Brushes.Green;
 
-                    } else if (player1Turn == false && player2Turn == true)
+                    }
+                    else if (player1Turn == false && player2Turn == true)
                     {
                         // player2points = player2points - 5;
                         player1Turn = true;
@@ -262,14 +268,15 @@ namespace MemoryProject
                     // Clear the selectedCards so the user can select new pairings
                     selectedCards.Clear();
 
-                    if(player1Turn == true && player2Turn == false)
+                    if (player1Turn == true && player2Turn == false)
                     {
                         player1points = player1points + 10;
                         player1score.Text = Convert.ToString(player1points);
                         // player1Turn = false;
                         // player2Turn = true;
 
-                    } else if(player1Turn == false && player2Turn == true)
+                    }
+                    else if (player1Turn == false && player2Turn == true)
                     {
                         player2points = player2points + 10;
                         player2score.Text = Convert.ToString(player2points);
@@ -277,25 +284,59 @@ namespace MemoryProject
 
                     if (sizeOfList == amountOfCards - 2)
                     {
+                        // TextWriter tw = new StreamWriter("HighScores.txt");
+                        // StreamWriter tw = File.AppendText("HighScores.txt");
+
                         if (player1points > player2points)
                         {
                             MessageBox.Show("Player 1 wins with: " + player1points + " points!");
-                        } else if (player2points > player1points)
+
+                            New_Score(player1points, player1name.Text);
+                        }
+                        else if (player2points > player1points)
                         {
                             MessageBox.Show("Player 2 wins with: " + player2points + " points!");
+
+                            New_Score(player2points, player2name.Text);
+                        } else if (player1points == player2points)
+                        {
+                            MessageBox.Show("Its a draw!");
+
+                            New_Score(player1points, player1name.Text);
+                            New_Score(player2points, player2name.Text);
                         }
                     }
-                    // MessageBox.Show("Paired cards count: " + sizeOfList);
-                    
                 }
             }
 
         }
 
 
+        private void New_Score(int score, string name)
+        {
+            string filename = "HighScores.txt";
+
+            List<string> scoreList;
+
+            if (File.Exists(filename))
+            {
+                scoreList = File.ReadAllLines(filename).ToList();
+            } else
+            {
+                scoreList = new List<string>();
+            }
+            
+            scoreList.Add(name + " " + score.ToString());
+
+            var sortedScoreList = scoreList.OrderByDescending(ss => int.Parse(ss.Substring(ss.LastIndexOf(" ") + 1)));
+
+            File.WriteAllLines(filename, sortedScoreList.ToArray());
+        }
+
+
         private List<ImageSource> GetImagesList()
         {
-            
+
 
             // Generate a random number
             Random rng = new Random();
@@ -325,7 +366,7 @@ namespace MemoryProject
                 {
                     imageNmr = i % 18 + 1;
                 }
-            
+
                 ImageSource source = new BitmapImage(new Uri("images/" + themeSelected + "/" + imageNmr + ".png", UriKind.Relative));
                 images.Add(source);
             }
