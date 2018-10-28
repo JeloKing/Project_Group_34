@@ -38,12 +38,24 @@ namespace MemoryProject
         {
             ThemeSelected = "fire emblem";
             MessageBox.Show("Theme: " + ThemeSelected + " Selected");
+
+            var imgBrush = new ImageBrush();
+            imgBrush.ImageSource = new BitmapImage(new Uri(@"images/fire emblem/fire emblem background.png", UriKind.Relative));
+            MainWindowGrid.Background = imgBrush;
+            HighScoresList.Foreground = Brushes.White;
+            HighScoresLine.Foreground = Brushes.White;
         }
 
         public void Sw_Clicked(object sender, RoutedEventArgs e)
         {
             ThemeSelected = "star Wars";
             MessageBox.Show("Theme: " + ThemeSelected + " Selected");
+
+            var imgBrush = new ImageBrush();
+            imgBrush.ImageSource = new BitmapImage(new Uri(@"images/star wars/star wars background.jpg", UriKind.Relative));
+            MainWindowGrid.Background = imgBrush;
+            HighScoresList.Foreground = Brushes.White;
+            HighScoresLine.Foreground = Brushes.White;
         }
 
 
@@ -59,12 +71,24 @@ namespace MemoryProject
             {
                 // Zet de PreGameSelectViewPage als content
                 Main.Content = new PreGameSelectViewPage(ThemeSelected);
+                MainWindowGrid.Children.Remove(Highscore);
+                MainWindowGrid.Children.Remove(Buttons);
+                MainWindowGrid.Children.Remove(Themes);
             }     
         }
 
         public void Resume_Clicked(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Resume clicked");
+            string filename = "MemorySaveGame.xaml";
+
+            using (System.IO.FileStream fs = System.IO.File.Open(filename, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+            {
+                Main.Content = System.Windows.Markup.XamlReader.Load(fs) as UIElement;
+            }
+
+            MainWindowGrid.Children.Remove(Highscore);
+            MainWindowGrid.Children.Remove(Buttons);
+            MainWindowGrid.Children.Remove(Themes);
         }
 
         public void Options_Clicked(object sender, RoutedEventArgs e)

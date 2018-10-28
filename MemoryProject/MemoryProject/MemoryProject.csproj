@@ -150,6 +150,31 @@
   <ItemGroup>
     <Resource Include="images\blankcard.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="images\fire emblem\fire emblem background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\star wars\1.png" />
+    <Resource Include="images\star wars\10.png" />
+    <Resource Include="images\star wars\11.png" />
+    <Resource Include="images\star wars\12.png" />
+    <Resource Include="images\star wars\13.png" />
+    <Resource Include="images\star wars\14.png" />
+    <Resource Include="images\star wars\15.png" />
+    <Resource Include="images\star wars\16.png" />
+    <Resource Include="images\star wars\17.png" />
+    <Resource Include="images\star wars\18.png" />
+    <Resource Include="images\star wars\2.png" />
+    <Resource Include="images\star wars\3.png" />
+    <Resource Include="images\star wars\4.png" />
+    <Resource Include="images\star wars\5.png" />
+    <Resource Include="images\star wars\6.png" />
+    <Resource Include="images\star wars\7.png" />
+    <Resource Include="images\star wars\8.png" />
+    <Resource Include="images\star wars\9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\star wars\star wars backside.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

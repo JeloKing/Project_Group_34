@@ -8,18 +8,60 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PreGameSelectViewPage">
 
-    <Grid Background="White" HorizontalAlignment="Center">
-
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Speler 1" VerticalAlignment="Top" Margin="335,143,0,0"/>
-        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Speler 2" VerticalAlignment="Top" Margin="336,204,0,0"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="335,164,0,0" Name="player1"/>
-        <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="335,225,0,0" Name="player2"/>
-        <Button Content="4x4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Margin="729,144,0,0" Height="43" Click="Play_Game_Grid4"/>
-        <Button Content="5x5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="43" Margin="729,204,0,0" Click="Play_Game_Grid5"/>
-        <Button Content="6x6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="45" Height="43" Margin="729,267,0,0" Click="Play_Game_Grid6"/>
 
 
-        <Frame x:Name="PreGameSelectView"/>
+    <Grid HorizontalAlignment="Center" Name="PreGameSelectViewPageMainGrid">
+
+        <Grid Name="PlayerNames">
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Speler 1" VerticalAlignment="Top" Margin="335,143,0,0" Foreground="white"/>
+            <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Speler 2" VerticalAlignment="Top" Margin="336,204,0,0" Foreground="white"/>
+
+
+            <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="335,164,0,0" Name="player1">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+
+            <TextBox HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" Margin="335,225,0,0" Name="player2">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+        </Grid>
+
+        <Grid Name="GridSelect">
+            <Button Content="4x4" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Margin="681,152,0,0" Height="34" Click="Play_Game_Grid4" Background="White">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Content="5x5" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Height="34" Margin="681,198,0,0" Click="Play_Game_Grid5" Background="White">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button Content="6x6" HorizontalAlignment="Left" VerticalAlignment="Top" Width="74" Height="34" Margin="681,247,0,0" Click="Play_Game_Grid6" Background="White">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </Grid>
+      
+
+        <Frame x:Name="PreGameSelectView" Margin="0,0,0.2,-0.4"/>
         <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Margin="336,281,0,0" Width="119" Visibility="Hidden" Name="SelectedTheme"/>
 
     </Grid>

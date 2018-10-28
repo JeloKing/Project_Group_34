@@ -13,22 +13,22 @@ using System.Windows.Threading;
 
 namespace MemoryProject
 {
-    // [Serializable()]
+    [Serializable]
     public class MemoryGrid
     {
         // Make the grid, rows and cols available for use (these are passed by the MainWindow)
-        private Grid grid;
+        public Grid grid;
 
-        private int rows, cols;
+        public int rows, cols;
 
-        private TextBlock player1score, player2score;
+        public TextBlock player1score, player2score;
 
-        private TextBlock player1name, player2name;
+        public TextBlock player1name, player2name;
 
-        private ImageSource firstPick;
-        private ImageSource secondPick;
+        public ImageSource firstPick;
+        public ImageSource secondPick;
 
-        private string themeSelected;
+        public string themeSelected;
 
         // Primary method of determining grid size and adding images to the grid
         public MemoryGrid()
@@ -77,7 +77,7 @@ namespace MemoryProject
         }
 
         // Method to add images to the already made grid
-        private void addImage()
+        public void addImage()
         {
             List<ImageSource> images = GetImagesList();
 
@@ -86,7 +86,6 @@ namespace MemoryProject
                 ImageSource blankCard = new BitmapImage(new Uri("images/blankcard.png", UriKind.Relative));
                 images.Insert(12, blankCard);
             }
-
 
             for (int row = 0; row < rows; row++)
             {

@@ -40,6 +40,8 @@ namespace MemoryProject
             int nr_of_rows = 4;
 
             PreGameSelectView.Content = new GameViewPage(player1Name, player2Name, themeSelected, nr_of_cols, nr_of_rows);
+            PreGameSelectViewPageMainGrid.Children.Remove(GridSelect);
+            PreGameSelectViewPageMainGrid.Children.Remove(PlayerNames);
         }
 
         public void Play_Game_Grid5(object sender, RoutedEventArgs e)

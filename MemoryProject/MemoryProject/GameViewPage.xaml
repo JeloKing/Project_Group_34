@@ -8,14 +8,12 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="GameViewPage">
 
-    <Grid>
-        <Grid x:Name="GameGrid" Background="White" Margin="0,0,90,-0.4">
-
-            <!--<TextBlock Name="testBlock" Text="test"/> -->
+    <Grid x:Name="GameViewPageGrid">
+        <Grid x:Name="GameGrid" Margin="0,0,90,-0.4">
 
         </Grid>
 
-        <Grid x:Name="PlayerGrid" Background="White" Margin="715,0,0,-0.4" HorizontalAlignment="Right">
+        <Grid x:Name="PlayerGrid" Margin="715,0,0,-0.4" HorizontalAlignment="Right">
 
             <!-- Player 1 -->
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="10,10,0,0" Name="player1name" Width="65"/>
@@ -25,8 +23,27 @@
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="10,86,0,0" Name="player2name" Width="65"/>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="9,107,0,0" Name="player2score" x:FieldModifier="public" Width="65" TextAlignment="Center"/>
 
-            <Button x:Name="SaveAndQuitGame" Margin="0,359,0,71" Height="20" Click="SaveQuitGame">Save and Quit</Button>
-            <Button x:Name="ResetGameButton" Margin="15,409,10.2,21" Width="50" Height="20" Click="ResetGame">Reset</Button>
+            <Button x:Name="SaveAndQuitGame" Margin="0,359,0,71" Height="20" Click="SaveQuitGame" Content="Save and Quit" Background="White">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+
+
+
+            <Button x:Name="ResetGameButton" Margin="15,409,10.2,21" Width="50" Height="20" Click="ResetGame" Content="Reset" Background="White">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="8"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        
+        
+        
         </Grid>
 
         <Frame x:Name="GameViewPageView"/>

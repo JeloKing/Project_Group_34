@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MemoryProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800"
+        WindowState="Maximized">
 
     <Window.Resources>
         <Style x:Key="MenuKnop" TargetType="Button">
@@ -51,10 +52,11 @@
     </Window.Resources>
 
     <Grid x:Name="MainWindowGrid">
+
         <Grid x:Name="Highscore" Margin="0,0,670,0" RenderTransformOrigin="0.533,0.26">
             <Grid Margin="0,0,0.2,377.8">
-                <TextBlock HorizontalAlignment="Left" Margin="30,10,0,0" TextWrapping="Wrap" Text="Highscores" VerticalAlignment="Top" FontWeight="Bold"/>
-                <TextBlock HorizontalAlignment="Left" Margin="23,19,0,0" TextWrapping="Wrap" Text="----------------" VerticalAlignment="Top" FontWeight="Bold"/>
+                <TextBlock HorizontalAlignment="Left" Margin="30,10,0,0" TextWrapping="Wrap" Text="Highscores" VerticalAlignment="Top" FontWeight="Bold" Background="White"/>
+                <TextBlock HorizontalAlignment="Left" Margin="23,19,0,0" TextWrapping="Wrap" Text="----------------" VerticalAlignment="Top" FontWeight="Bold" Name="HighScoresLine"/>
                 <TextBlock HorizontalAlignment="Left" Margin="10,40,0,-366.8" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="104" Height="369" Name="HighScoresList"/>
             </Grid>
         </Grid>
@@ -73,7 +75,7 @@
             <Button Margin="10" Content="Afsluiten" Grid.Row="3" x:Name="Afsluiten" Style="{StaticResource MenuKnop}" Width="Auto" Click="Quit_Clicked"/>
         </Grid>
 
-        <Grid x:Name="Themas" Margin="645,36,0,36">
+        <Grid x:Name="Themes" Margin="645,36,0,36">
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -81,25 +83,25 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Grid.Row="0" Background="White" BorderThickness="0" Width="77" Height="77" Style="{StaticResource ThemaKnop}">
+            <Button Grid.Row="0" BorderThickness="0" Width="77" Height="77" Style="{StaticResource ThemaKnop}">
                 <StackPanel>
                     <Image Source="/images/main_menu/sh.png"/>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="1" Background="White" BorderThickness="0" Width="77" Height="77" Style="{StaticResource ThemaKnop}">
+            <Button Grid.Row="1" BorderThickness="0" Width="77" Height="77" Style="{StaticResource ThemaKnop}">
                 <StackPanel >
                     <Image Source="/images/main_menu/se.png" Stretch="Fill" Height="77" Width="77" Grid.Row="1"/>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="2" Background="White" BorderThickness="0" Width="77" Height="77" Style="{StaticResource ThemaKnop}" Click="Sw_Clicked">
+            <Button Grid.Row="2" BorderThickness="0" Width="77" Height="77" Style="{StaticResource ThemaKnop}" Click="Sw_Clicked">
                 <StackPanel>
                     <Image Source="/images/main_menu/sw.png" Stretch="Fill" Height="77" Width="77" Grid.Row="2"/>
                 </StackPanel>
             </Button>
 
-            <Button Grid.Row="3" Background="White" BorderThickness="0" Width="77" Height="77" Style="{StaticResource ThemaKnop}" Click="Fe_Clicked">
+            <Button Grid.Row="3" BorderThickness="0" Width="77" Height="77" Style="{StaticResource ThemaKnop}" Click="Fe_Clicked">
                 <StackPanel>
                     <Image Source="/images/main_menu/fe.png" Stretch="Fill" Height="77" Width="77" Grid.Row="3"/>
                 </StackPanel>

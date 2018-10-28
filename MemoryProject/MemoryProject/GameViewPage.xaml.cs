@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,11 +23,7 @@ namespace MemoryProject
     /// </summary>
     public partial class GameViewPage : Page
     {
-
-        
-
         MemoryGrid grid;
-
 
         public GameViewPage(string player1input, string player2input, string themeSelected, int nr_of_cols, int nr_of_rows)
         {
@@ -45,14 +42,6 @@ namespace MemoryProject
 
             nrOfCols.Text = Convert.ToString(nr_of_cols);
             nrOfRows.Text = Convert.ToString(nr_of_rows);
-            
-
-            // string player1points = player1score.Text;
-
-            // int player1points = Convert.ToInt32(player1score.Text);
-            // int player2points = Convert.ToInt32(player2score.Text);
-
-            // MessageBox.Show(player1points);
 
             grid = new MemoryGrid();
             grid.MemoryGridInitializer(GameGrid, nr_of_rows, nr_of_cols, player1points, player2points, player1naam, player2naam, themeSelected);
@@ -71,9 +60,11 @@ namespace MemoryProject
             TextBlock player1naam = player1name;
             TextBlock player2naam = player2name;
 
+            player1name.Background = Brushes.Green;
+            player2name.Background = Brushes.White;
+
             int nr_of_cols = Convert.ToInt32(nrOfCols.Text);
             int nr_of_rows = Convert.ToInt32(nrOfRows.Text);
-            
 
             GameGrid.ColumnDefinitions.Clear();
             GameGrid.RowDefinitions.Clear();
@@ -84,7 +75,21 @@ namespace MemoryProject
 
         public void SaveQuitGame(object sender, RoutedEventArgs e)
         {
-            
+            UIElement element = GameViewPageGrid;
+            string strXAML = System.Windows.Markup.XamlWriter.Save(element);
+            string filename = "MemorySaveGame.xaml";
+
+            using(System.IO.FileStream fs = System.IO.File.Create(filename))
+            {
+                using(System.IO.StreamWriter streamwriter = new System.IO.StreamWriter(fs))
+                {
+                    streamwriter.Write(strXAML);
+                }
+            }
+
+            MessageBox.Show("MemoryGame Saved!");
+
+            Application.Current.Shutdown();
         }
     }
 }
