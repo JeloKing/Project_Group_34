@@ -36,3 +36,22 @@ D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.csproj.CoreCompileInputs.cache
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.exe
 D:\Programeren\C#\MemoryGame\Memory Project Group 34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.pdb
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\bin\Debug\MemoryProject.exe.config
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\bin\Debug\MemoryProject.exe
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\bin\Debug\MemoryProject.pdb
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.csprojAssemblyReference.cache
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\GameViewPage.g.cs
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\MainWindow.g.cs
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\PreGameSelectViewPage.g.cs
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\App.g.cs
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\MemoryProject_MarkupCompile.cache
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\MemoryProject_MarkupCompile.lref
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\GameViewPage.baml
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\MainWindow.baml
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\PreGameSelectViewPage.baml
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.g.resources
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.Properties.Resources.resources
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.csproj.GenerateResource.cache
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.csproj.CoreCompileInputs.cache
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.exe
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\MemoryProject\MemoryProject\obj\Debug\MemoryProject.pdb
