@@ -1,7 +1,0 @@
-s 80
-Jeldert 80
-AAAAAAA 80
-i 70
-zack 60
-k 60
-hans 50
