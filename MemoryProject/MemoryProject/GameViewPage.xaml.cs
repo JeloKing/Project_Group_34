@@ -34,6 +34,8 @@ namespace MemoryProject
             player1name.Text = player1input;
             player2name.Text = player2input;
 
+            player2name.Background = Brushes.White;
+
             TextBlock player1points = player1score;
             TextBlock player2points = player2score;
 
@@ -60,7 +62,7 @@ namespace MemoryProject
             TextBlock player1naam = player1name;
             TextBlock player2naam = player2name;
 
-            player1name.Background = Brushes.Green;
+            player1name.Background = Brushes.Cyan;
             player2name.Background = Brushes.White;
 
             int nr_of_cols = Convert.ToInt32(nrOfCols.Text);
@@ -75,7 +77,7 @@ namespace MemoryProject
 
         public void SaveQuitGame(object sender, RoutedEventArgs e)
         {
-            UIElement element = GameViewPageGrid;
+            /* UIElement element = GameViewPageGrid;
             string strXAML = System.Windows.Markup.XamlWriter.Save(element);
             string filename = "MemorySaveGame.xaml";
 
@@ -85,11 +87,12 @@ namespace MemoryProject
                 {
                     streamwriter.Write(strXAML);
                 }
-            }
+            } */
 
-            MessageBox.Show("MemoryGame Saved!");
+            grid = new MemoryGrid();
+            grid.SaveGame();
 
-            Application.Current.Shutdown();
+            // Application.Current.Shutdown();
         }
     }
 }
