@@ -1,1 +1,0 @@
-Alle stukken die jij (Jesse) voor het project maakt komen hier

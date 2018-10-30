@@ -1,1 +1,0 @@
-Alle stukken die jij (Bart) voor het project maakt komen hier
