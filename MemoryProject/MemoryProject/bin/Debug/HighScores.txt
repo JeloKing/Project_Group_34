@@ -2,4 +2,6 @@ s 80
 i 70
 zack 60
 k 60
+hans 60
 hans 50
+Speler 2 50

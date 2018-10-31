@@ -51,8 +51,8 @@ namespace MemoryProject
 
             this.themeSelected = themeSelected;
 
-            // Set player1 to green
-            player1name.Background = Brushes.Green;
+            // Set player1 to cyan
+            player1name.Background = Brushes.Cyan;
 
             // Call the method Initialize grid to make the grid
             InitializeGrid();
@@ -76,10 +76,14 @@ namespace MemoryProject
             }
         }
 
+
+        // Images list for addImage
+        List<ImageSource> images;
+
         // Method to add images to the already made grid
         public void addImage()
         {
-            List<ImageSource> images = GetImagesList();
+            images = GetImagesList();
 
             if (cols * cols == 25)
             {
@@ -239,7 +243,7 @@ namespace MemoryProject
                         player2Turn = true;
 
                         player1name.Background = Brushes.White;
-                        player2name.Background = Brushes.Green;
+                        player2name.Background = Brushes.Cyan;
 
                     }
                     else if (player1Turn == false && player2Turn == true)
@@ -248,7 +252,7 @@ namespace MemoryProject
                         player1Turn = true;
                         player2Turn = false;
 
-                        player1name.Background = Brushes.Green;
+                        player1name.Background = Brushes.Cyan;
                         player2name.Background = Brushes.White;
                     }
 
@@ -304,6 +308,14 @@ namespace MemoryProject
                             New_Score(player1points, player1name.Text);
                             New_Score(player2points, player2name.Text);
                         }
+
+                        if (MessageBox.Show("Exit game?", "", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                        {
+                            return;
+                        } else
+                        {
+                            Application.Current.Shutdown();
+                        }
                     }
                 }
             }
@@ -329,14 +341,19 @@ namespace MemoryProject
 
             var sortedScoreList = scoreList.OrderByDescending(ss => int.Parse(ss.Substring(ss.LastIndexOf(" ") + 1)));
 
-            File.WriteAllLines(filename, sortedScoreList.ToArray());
+            var sortedScoreListArray = sortedScoreList.ToArray();
+            
+            if(sortedScoreListArray.Length > 10)
+            {
+                sortedScoreListArray.Reverse().Skip(1).Reverse().ToArray();
+            }
+
+            File.WriteAllLines(filename, sortedScoreListArray.ToArray());
         }
 
 
         private List<ImageSource> GetImagesList()
         {
-
-
             // Generate a random number
             Random rng = new Random();
 
@@ -353,7 +370,6 @@ namespace MemoryProject
             // Loop through 16 times to generate 2 sets of 8 images to add as an image source for the front of a card
             for (int i = 0; i < amountOfCards; i++)
             {
-
                 int imageNmr = i % 8 + 1;
 
                 if (cols * cols == 25)
@@ -373,6 +389,22 @@ namespace MemoryProject
             // Returns a shuffeld images list based on the random number generated earlier
             return images.OrderBy(a => rng.Next()).ToList();
 
+        }
+
+        public void SaveGame()
+        {
+            images = GetImagesList();
+
+            Dictionary<ImageSource, bool> SavedCardList = new Dictionary<ImageSource, bool>();
+
+            bool flipped;
+
+            foreach (var tester in images)
+            {
+                MessageBox.Show(Convert.ToString(tester) + "test");
+            }
+
+            MessageBox.Show("MemoryGame Saved!");
         }
 
     }

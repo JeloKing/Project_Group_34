@@ -37,7 +37,7 @@ namespace MemoryProject
         public void Fe_Clicked(object sender, RoutedEventArgs e)
         {
             ThemeSelected = "fire emblem";
-            MessageBox.Show("Theme: " + ThemeSelected + " Selected");
+            // MessageBox.Show("Theme: " + ThemeSelected + " Selected");
 
             var imgBrush = new ImageBrush();
             imgBrush.ImageSource = new BitmapImage(new Uri(@"images/fire emblem/fire emblem background.png", UriKind.Relative));
@@ -49,7 +49,7 @@ namespace MemoryProject
         public void Sw_Clicked(object sender, RoutedEventArgs e)
         {
             ThemeSelected = "star Wars";
-            MessageBox.Show("Theme: " + ThemeSelected + " Selected");
+            // MessageBox.Show("Theme: " + ThemeSelected + " Selected");
 
             var imgBrush = new ImageBrush();
             imgBrush.ImageSource = new BitmapImage(new Uri(@"images/star wars/star wars background.jpg", UriKind.Relative));

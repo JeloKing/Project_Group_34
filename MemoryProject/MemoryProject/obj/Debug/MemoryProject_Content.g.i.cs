@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("images/star%20wars/star%20wars%20backside.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("gameicon.ico")]
 
 
