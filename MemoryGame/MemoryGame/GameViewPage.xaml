@@ -23,7 +23,7 @@
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Margin="10,86,0,0" Name="player2name" Width="65"/>
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Margin="9,107,0,0" Name="player2score" x:FieldModifier="public" Width="65" TextAlignment="Center" Foreground="White"/>
 
-            <Button x:Name="SaveAndQuitGame" Margin="0,359,0,71" Height="20" Click="SaveQuitGame" Content="Save and Quit" Background="White">
+            <Button x:Name="SaveAndQuitGame" Margin="0,359,0,71" Height="20" Click="SaveQuitGame" Content="Save and Menu" Background="White">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="8"/>
