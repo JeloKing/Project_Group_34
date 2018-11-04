@@ -1,0 +1,100 @@
+﻿<Window x:Class="MemoryGame.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MemoryGame"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <Style x:Key="MenuKnop" TargetType="Button">
+            <Setter Property="Background" Value="Gainsboro"/>
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="FontSize" Value="24"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border CornerRadius="5" Background="{TemplateBinding Background}"
+                                BorderThickness="4" Height="50" Margin="0,0,0,0">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                            </ContentPresenter>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="ThemaKnop" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border"
+                            BorderThickness="0"
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid x:Name="MainWindowGrid">
+
+        <Grid.Background>
+            <ImageBrush ImageSource="/images/main_menu/background.gif" Opacity="0.2"/>
+        </Grid.Background>
+
+        <Grid x:Name="Highscore" Margin="0,0,670,0" RenderTransformOrigin="0.533,0.26" HorizontalAlignment="Left">
+            <Grid Margin="0,0,0.2,377.8">
+                <TextBlock HorizontalAlignment="Left" Margin="30,10,0,0" TextWrapping="Wrap" Text="Highscores" VerticalAlignment="Top" FontWeight="Bold" Background="White"/>
+                <TextBlock HorizontalAlignment="Left" Margin="23,19,0,0" TextWrapping="Wrap" Text="----------------" VerticalAlignment="Top" FontWeight="Bold" Name="HighScoresLine"/>
+                <TextBlock HorizontalAlignment="Left" Margin="10,40,0,-366.8" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="104" Height="369" Name="HighScoresList"/>
+            </Grid>
+        </Grid>
+
+
+        <Grid x:Name="Buttons" Width="300" Margin="248,36,248,36" HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Button Margin="10,10,10,9.6" Content="Start nieuw spel" Grid.Row="0" Name="button1" Style="{StaticResource MenuKnop}" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" MaxWidth="840" MaxHeight="202.8" ScrollViewer.VerticalScrollBarVisibility="Disabled" Click="Play_Clicked"/>
+            <Button Margin="10" Content="Hervat vorig spel" Grid.Row="1" Name="button2" Style="{StaticResource MenuKnop}" Width="Auto" Click="Resume_Clicked"/>
+            <Button Margin="10" Content="Afsluiten" Grid.Row="2" x:Name="Afsluiten" Style="{StaticResource MenuKnop}" Width="Auto" Click="Quit_Clicked"/>
+        </Grid>
+
+        <Grid x:Name="Themes" Margin="645,36,0,36" HorizontalAlignment="Right">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Button Grid.Row="1" BorderThickness="0" Width="77" Height="77" Style="{StaticResource ThemaKnop}" Cursor="Hand" Click="Sw_Clicked">
+                <StackPanel>
+                    <Image Source="/images/main_menu/sw.png" Stretch="Fill" Height="77" Width="77" Grid.Row="2"/>
+                </StackPanel>
+            </Button>
+
+            <Button Grid.Row="2" BorderThickness="0" Width="77" Height="77" Style="{StaticResource ThemaKnop}" Cursor="Hand" Click="Fe_Clicked">
+                <StackPanel>
+                    <Image Source="/images/main_menu/fe.png" Stretch="Fill" Height="77" Width="77" Grid.Row="3"/>
+                </StackPanel>
+            </Button>
+
+        </Grid>
+        <Frame x:Name="Main" NavigationUIVisibility="Hidden" Margin="0,-10,-0.4,10.4"/>
+    </Grid>
+</Window>

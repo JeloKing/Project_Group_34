@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<MemorySaveGameInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Player1Name>peter</Player1Name>
-  <Player2Name>jann</Player2Name>
-  <Player1Score>0</Player1Score>
-  <Player2Score>10</Player2Score>
-  <ThemeSelected>star Wars</ThemeSelected>
-</MemorySaveGameInformation>
