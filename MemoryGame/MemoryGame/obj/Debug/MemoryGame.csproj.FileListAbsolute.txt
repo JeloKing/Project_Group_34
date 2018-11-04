@@ -17,3 +17,5 @@ D:\Programeren\C#\MemoryGame\FinalMemory\MemoryGame\MemoryGame\obj\Debug\MemoryG
 D:\Programeren\C#\MemoryGame\FinalMemory\MemoryGame\MemoryGame\obj\Debug\MemoryGame.exe
 D:\Programeren\C#\MemoryGame\FinalMemory\MemoryGame\MemoryGame\obj\Debug\MemoryGame.pdb
 D:\Programeren\C#\MemoryGame\FinalMemory\MemoryGame\MemoryGame\obj\Debug\MemoryGame.csprojAssemblyReference.cache
+D:\Programeren\C#\MemoryGame\FinalMemory\MemoryGame\MemoryGame\obj\Debug\MainMenu.g.cs
+D:\Programeren\C#\MemoryGame\FinalMemory\MemoryGame\MemoryGame\obj\Debug\MainMenu.baml

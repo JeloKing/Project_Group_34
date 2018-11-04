@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PreGameSelectViewPage">
 
-    <Grid HorizontalAlignment="Center" Name="PreGameSelectViewPageMainGrid">
+    <Grid Name="PreGameSelectViewPageMainGrid">
 
         <Grid Name="PlayerNames">
             <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Text="Speler 1" VerticalAlignment="Top" Margin="335,143,0,0" Foreground="white"/>

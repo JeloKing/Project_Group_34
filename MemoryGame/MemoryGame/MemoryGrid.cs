@@ -42,6 +42,18 @@ namespace MemoryGame
         public TextBlock Player1Name, Player2Name;
 
 
+        /// <summary>
+        /// This method Initializes the creation of the grid and adds images to said grid.
+        /// It also sets all passed variables so the can be used in the class scope
+        /// </summary>
+        /// <param name="grid"></param>
+        /// <param name="rows"></param>
+        /// <param name="cols"></param>
+        /// <param name="ThemeSelected"></param>
+        /// <param name="Player1Score"></param>
+        /// <param name="Player2Score"></param>
+        /// <param name="Player1Name"></param>
+        /// <param name="Player2Name"></param>
         public void MemoryGridInitializer(Grid grid, int rows, int cols, string ThemeSelected, TextBlock Player1Score, TextBlock Player2Score, TextBlock Player1Name, TextBlock Player2Name)
         {
             this.grid = grid;
@@ -52,11 +64,18 @@ namespace MemoryGame
             this.Player2Score = Player2Score;
             this.Player1Name = Player1Name;
             this.Player2Name = Player2Name;
-            
+
+            Player1Name.Background = Brushes.Cyan;
+            Player2Name.Background = Brushes.White;
+
             InitializeGrid();
             AddImage();
         }
 
+
+        /// <summary>
+        /// Makes a grid based on the number of passed rows
+        /// </summary>
         public void InitializeGrid()
         {
             for (int i = 0; i < rows; i++)
@@ -70,6 +89,9 @@ namespace MemoryGame
             }
         }
 
+        /// <summary>
+        /// Adds images to the grid. it also checks if selected grid is 5x5 so it adds a blank card to substitute the middle
+        /// </summary>
         public void AddImage()
         {
             List<ImageSource> images = GetImageList();
@@ -112,6 +134,13 @@ namespace MemoryGame
         }
 
 
+        /// <summary>
+        /// The event handler that is added to the cards in the AddImage method.
+        /// It sets the backside for each card, it also keeps track of player turns, if selected cards are pairs,
+        /// adds points to players if selected cards are pairs, and checks if the game has been completed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void CardClick(object sender, MouseButtonEventArgs e)
         {
             ListSize = PairedCards.Count();
@@ -165,11 +194,17 @@ namespace MemoryGame
                     {
                         Player1Turn = false;
                         Player2Turn = true;
+
+                        Player1Name.Background = Brushes.White;
+                        Player2Name.Background = Brushes.Cyan;
                     }
                     else if (Player1Turn == false && Player2Turn == true)
                     {
                         Player1Turn = true;
                         Player2Turn = false;
+
+                        Player1Name.Background = Brushes.Cyan;
+                        Player2Name.Background = Brushes.White;
                     }
                 }
                 else if (Convert.ToString(FirstPick) == Convert.ToString(SecondPick))
@@ -223,6 +258,11 @@ namespace MemoryGame
             }
         }
 
+        /// <summary>
+        /// Method used to make a list of randomly sorted images.
+        /// These images are take from a map based on the theme selected in the MainMenu
+        /// </summary>
+        /// <returns></returns>
         public List<ImageSource> GetImageList()
         {
             Random rng = new Random();
@@ -245,6 +285,24 @@ namespace MemoryGame
                 images.Add(source);
             }
             return images.OrderBy(a => rng.Next()).ToList();
+        }
+
+        /// <summary>
+        /// Saves Information about current game to Xmlfile
+        /// </summary>
+        public void SaveGame()
+        {
+            MemorySaveGameInfo info = new MemorySaveGameInfo();
+            info.Player1Name = Player1Name.Text;
+            info.Player2Name = Player2Name.Text;
+            info.Player1Score = Player1Score.Text;
+            info.Player2Score = Player2Score.Text;
+            info.ThemeSelected = ThemeSelected;
+
+            SaveMemoryGame.SaveData(info, "MemorySaveGame.xml");
+            MessageBox.Show("MemoryGame Saved!");
+
+            grid.Children.Remove(grid);
         }
     }
 }

@@ -34,7 +34,11 @@ namespace MemoryGame
 
         string themeSelected;
         
-
+        /// <summary>
+        /// Initiates game with 4x4 grid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Play_Game_Grid4(object sender, RoutedEventArgs e)
         {
             SetPlayerNames();
@@ -48,6 +52,11 @@ namespace MemoryGame
 
         }
 
+        /// <summary>
+        /// Initiates game with 5x5 grid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Play_Game_Grid5(object sender, RoutedEventArgs e)
         {
             SetPlayerNames();
@@ -60,6 +69,12 @@ namespace MemoryGame
             RemoveBackground();
         }
 
+
+        /// <summary>
+        /// Initiates game with 6x6 grid
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         public void Play_Game_Grid6(object sender, RoutedEventArgs e)
         {
             SetPlayerNames();
@@ -72,12 +87,18 @@ namespace MemoryGame
             RemoveBackground();
         }
 
+        /// <summary>
+        /// Sets playernames
+        /// </summary>
         public void SetPlayerNames()
         {
             Player1Name = player1.Text;
             Player2Name = player2.Text;
         }
 
+        /// <summary>
+        /// Removes previous grids
+        /// </summary>
         public void RemoveBackground()
         {
             PreGameSelectViewPageMainGrid.Children.Remove(GridSelect);

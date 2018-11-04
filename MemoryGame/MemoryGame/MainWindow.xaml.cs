@@ -24,74 +24,8 @@ namespace MemoryGame
         public MainWindow()
         {
             InitializeComponent();
-            GetHighscores();
+            MainWindowFrame.Content = new MainMenu();
         }
-
-        string ThemeSelected;
-
-        public void Fe_Clicked(object sender, RoutedEventArgs e)
-        {
-            ThemeSelected = "fire emblem";
-
-            var ImgBrush = new ImageBrush();
-            ImgBrush.ImageSource = new BitmapImage(new Uri(@"images/fire emblem/fire emblem background.png", UriKind.Relative));
-            MainWindowGrid.Background = ImgBrush;
-            HighScoresList.Foreground = Brushes.White;
-            HighScoresLine.Foreground = Brushes.White;
-        }
-
-        public void Sw_Clicked(object sender, RoutedEventArgs e)
-        {
-            ThemeSelected = "star wars";
-
-            var ImgBrush = new ImageBrush();
-            ImgBrush.ImageSource = new BitmapImage(new Uri(@"images/star wars/star wars background.jpg", UriKind.Relative));
-            MainWindowGrid.Background = ImgBrush;
-            HighScoresList.Foreground = Brushes.White;
-            HighScoresLine.Foreground = Brushes.White;
-        }
-
-        public void Play_Clicked(object sender, RoutedEventArgs e)
-        {
-            if (ThemeSelected == null)
-            {
-                MessageBox.Show("Before continuing please select a theme on the right.");
-                return;
-            } else
-            {
-                Main.Content = new PreGameSelectViewPage(ThemeSelected);
-                MainWindowGrid.Children.Remove(Highscore);
-                MainWindowGrid.Children.Remove(Buttons);
-                MainWindowGrid.Children.Remove(Themes);
-            }
-        }
-
-        public void Resume_Clicked(object sender, RoutedEventArgs e)
-        {
-            return;
-        }
-
-        public void Quit_Clicked(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        public void GetHighscores()
-        {
-            string Filename = "HighScores.txt";
-
-            if (File.Exists(Filename))
-            {
-                StreamReader sr = new StreamReader("HighScores.txt");
-                HighScoresList.Text = sr.ReadToEnd();
-                sr.Close();
-            }
-            else
-            {
-                return;
-            }   
-        }
-
 
     }
 }

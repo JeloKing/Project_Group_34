@@ -9,7 +9,12 @@ namespace MemoryGame
 {
     public class HighScore
     {
-
+        /// <summary>
+        /// On method call opens the HighScores.txt file, takes all the string in said file and puts them in a list.
+        /// Which it then sorts based on score and puts them back in the file.
+        /// </summary>
+        /// <param name="Score"></param>
+        /// <param name="Playername"></param>
         public void NewHighScore(int Score, string Playername)
         {
             string Filename = "HighScores.txt";
