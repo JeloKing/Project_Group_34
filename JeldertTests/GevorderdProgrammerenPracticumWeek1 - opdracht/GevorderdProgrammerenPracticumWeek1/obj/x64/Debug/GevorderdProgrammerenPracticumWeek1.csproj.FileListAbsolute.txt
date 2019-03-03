@@ -1,0 +1,36 @@
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\bin\x64\Debug\GevorderdProgrammerenPracticumWeek1.exe.config
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\bin\x64\Debug\GevorderdProgrammerenPracticumWeek1.exe
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\bin\x64\Debug\GevorderdProgrammerenPracticumWeek1.pdb
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.csprojResolveAssemblyReference.cache
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\MainWindow.baml
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\MainWindow.g.cs
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\App.g.cs
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1_MarkupCompile.cache
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.g.resources
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.csproj.CoreCompileInputs.cache
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.exe
+D:\School\Vakken\Gevorderd Programmeren\2018-2019\Huiswerk\GevorderdProgrammerenPracticumWeek1WPF\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.pdb
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\bin\x64\Debug\GevorderdProgrammerenPracticumWeek1.exe.config
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\bin\x64\Debug\GevorderdProgrammerenPracticumWeek1.exe
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\bin\x64\Debug\GevorderdProgrammerenPracticumWeek1.pdb
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.csprojAssemblyReference.cache
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\MainWindow.baml
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\MainWindow.g.cs
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\App.g.cs
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1_MarkupCompile.cache
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.g.resources
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.csproj.CoreCompileInputs.cache
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.exe
+C:\Users\Jeldert\Desktop\Folder's and Files\School\NHLStenden\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.pdb
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\bin\x64\Debug\GevorderdProgrammerenPracticumWeek1.exe.config
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\bin\x64\Debug\GevorderdProgrammerenPracticumWeek1.exe
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\bin\x64\Debug\GevorderdProgrammerenPracticumWeek1.pdb
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.csprojAssemblyReference.cache
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\MainWindow.baml
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\MainWindow.g.cs
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\App.g.cs
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1_MarkupCompile.cache
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.g.resources
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.csproj.CoreCompileInputs.cache
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.exe
+C:\Users\Jeldert\Documents\GitHub\Project_Group_34\JeldertTests\GevorderdProgrammerenPracticumWeek1 - opdracht\GevorderdProgrammerenPracticumWeek1\obj\x64\Debug\GevorderdProgrammerenPracticumWeek1.pdb

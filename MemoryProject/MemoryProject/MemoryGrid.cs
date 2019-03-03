@@ -159,7 +159,6 @@ namespace MemoryProject
         private void CardClick(object sender, MouseButtonEventArgs e)
         {
             sizeOfList = pairedCards.Count();
-
             amountOfCards = cols * cols;
 
             if (cols * cols == 25)
@@ -169,6 +168,10 @@ namespace MemoryProject
 
             Image card = (Image)sender;
             ImageSource front = (ImageSource)card.Tag;
+
+            int w = (int)card.Width;
+            int calc = (w/100*10) + w;
+            double h = (double)card.Height;
             card.Source = front;
 
             // Set a variable for the cardback (could be removed, its only used once)
@@ -179,6 +182,20 @@ namespace MemoryProject
             {
                 MessageBox.Show("Card has already been selected");
                 return;
+            }
+
+            int counter = 1;
+            for (int i = 0; card.Width < calc; i++)
+            {
+                counter++;
+                card.Width = 0;
+                card.Width++;
+                card.Height++;
+                
+            }
+            for (double i = 0; card.Width < 0; i++)
+            {
+                card.Width -= 2;
             }
 
             // If firstPickSelected and secondPickSelected equals false set firstPick source, set firstPickSelected to true, 
@@ -192,6 +209,13 @@ namespace MemoryProject
 
                 // Add the selected card to the selectedCards list
                 selectedCards.Add(card);
+                for (double i = 0; card.Width < calc; i++)
+                {
+                    card.Width = 0;
+                    card.Width++;
+                    card.Height++;
+                    counter++;
+                }
                 // Disable the clicked card so it cant be clicked twice
                 card.IsEnabled = false;
 
@@ -229,6 +253,11 @@ namespace MemoryProject
                         }
                         timer.Stop();
                         grid.IsEnabled = true;
+
+                        for (int i = 0; card.Width > w * 1.1; i++)
+                        {
+                            card.Width += 2;
+                        }
                     }
 
                     firstPickSelected = false;
