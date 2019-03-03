@@ -155,6 +155,8 @@ namespace MemoryProject
 
         List<string> scoreList;
 
+        
+
         // Method to show a new image when a card has been clicked
         private void CardClick(object sender, MouseButtonEventArgs e)
         {
@@ -169,6 +171,10 @@ namespace MemoryProject
 
             Image card = (Image)sender;
             ImageSource front = (ImageSource)card.Tag;
+
+            int w = (int)card.Width;
+            int h = (int)card.Height;
+
             card.Source = front;
 
             // Set a variable for the cardback (could be removed, its only used once)
@@ -180,6 +186,18 @@ namespace MemoryProject
                 MessageBox.Show("Card has already been selected");
                 return;
             }
+
+            for (int i = 0; card.Width < 1.1 * w; i++)
+            {
+                card.Width = 0;
+                card.Width++;
+                card.Height++;
+            }
+            for (int i = 0; card.Width < 0; i++)
+            {
+                card.Width -= 2;
+            }
+            
 
             // If firstPickSelected and secondPickSelected equals false set firstPick source, set firstPickSelected to true, 
             // add the selected card to the selectedCard list and disable the ability to click the same card twice
@@ -229,6 +247,12 @@ namespace MemoryProject
                         }
                         timer.Stop();
                         grid.IsEnabled = true;
+
+                        //verander back in front
+            for (int i = 0; card.Width > w * 1.1; i++)
+            {
+                card.Width += 2;
+            }
                     }
 
                     firstPickSelected = false;
