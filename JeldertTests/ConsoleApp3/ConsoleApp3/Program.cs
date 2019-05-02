@@ -14,11 +14,22 @@ namespace ConsoleApp3
         }
             class Person
             {
+            public class CharacterName : Person
+            {
+                private name name;
+                public CharacterName(name originalname)
+                {
+                    name = originalname;
+                }
+            }
 
             }
             class Hero : Person
             {
-
+            public class ArchNemesis : Villain
+            {
+                private 
+            }
             }
             class Villain : Person
             {

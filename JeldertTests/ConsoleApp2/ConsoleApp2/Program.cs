@@ -10,6 +10,7 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
+            string playerLevelstr = PlayerPrefs.GetString("Player").Substring(2, 2);
         }
     }
 }

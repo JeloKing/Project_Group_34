@@ -34,16 +34,42 @@ namespace GevorderdProgrammerenPracticumWeek4
 
         public T GetLast()
         {
+            if (next == null)
+                return item;
+
+            return next.GetLast();
+
             throw new NotImplementedException();
         }
 
+        static int elementen = 0;
         public int Count()
         {
+            elementen++;
+            if (next == null)
+            {
+                return elementen;
+            }
+            else
+                return next.Count();
             throw new NotImplementedException();
         }
 
         public MyList<T> Reverse()
         {
+            MyList<T> reversed;
+            if (next != null)
+            {
+                reversed = next.Reverse();
+                reversed.Add(item);
+                return reversed;
+
+            }
+            else
+            {
+                reversed = new MyList<T>(item);
+                return reversed;
+            } 
             throw new NotImplementedException();
         }
     }

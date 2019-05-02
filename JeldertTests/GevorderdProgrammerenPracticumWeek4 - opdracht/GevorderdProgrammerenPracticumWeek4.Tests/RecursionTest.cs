@@ -121,6 +121,17 @@ namespace GevorderdProgrammerenPracticumWeek4.Tests
         }
 
         [TestMethod]
+        public void Opdracht05_ToetIsPalindroomTest()
+        {
+            //Arrange
+            Recursion recursion = new Recursion();
+            //Act
+            bool result = recursion.IsPalindroom("Toet");
+            //Assert
+            Assert.AreEqual(false, result);
+        }
+
+        [TestMethod]
         public void Opdracht05_RaceautoIsPalindroomTest()
         {
             //Arrange
