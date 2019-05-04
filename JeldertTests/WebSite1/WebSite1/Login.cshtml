@@ -1,4 +1,161 @@
-﻿<!DOCTYPE html>
+﻿@using WebMatrix.Data
+
+@{ 
+    // hier geef je aan dat je de layout wilt gebruiken
+    Layout = "~/_SiteLayout.cshtml";
+
+    // hier maak je de benodigde variabelen aan.
+    //login
+    var LoginUser = "";
+    var LoginPassword = "";
+    //GuestCode
+    var LoginCode = ""; 
+    //Register
+    bool pwvalidation = true;
+    var RegisterEmail = "";
+    var RegisterPassword = "";
+    var Name = "";
+    var RegisterPasswordConfirm = "";
+    var hashed = "";
+    var sha256 = "";
+    var sha1 = "";
+    var salt = "";
+    var RegisterhashedPassword = "";
+    //Password Reset
+    var ResetEmail = "";
+
+
+    //LoginForm
+    {
+        // hier zet je validatie messages voor als iemand iets niet invult.
+        Validation.RequireField("LoginUser", "Voer je gebruikersnaam adres in.");
+        Validation.RequireField("Password", "Voer je wachtwoord in.");
+
+        // hiermee kunnen gebruikers inloggen
+        if (IsPost)
+        {
+            // Haal email en wachtwoord vaue op uit form
+            LoginUser = Request.Form["Email"];
+            LoginPassword = Request.Form["Password"];
+
+            if (Validation.IsValid())
+            {
+                // hier open je de database
+                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+                string provider = "System.Data.SqlClient";
+                Database db = Database.OpenConnectionString(connectionString, provider);
+
+                // hier haal je het wachtwoord op wat in de database staat
+                var hashedPassword = db.QueryValue("SELECT Password FROM Account WHERE LOWER(Email) = LOWER(@0)", LoginUser);
+                hashedPassword.ToString();
+
+                // zet bool checkPassword
+                var checkPassword = false;
+                // Vergelijk de gehashte values van het opgehaalde wachtwoord en het opgegeven wachtwoord
+                checkPassword = Crypto.VerifyHashedPassword(hashedPassword, LoginPassword);
+
+                // hier kijk je of je wachtwoord klopt
+                if (checkPassword == true)
+                {
+                    // Zet sessions
+                    Session["LoggedIn"] = "Yes";
+                    Session["Username"] = db.QueryValue("SELECT Email FROM Account WHERE LOWER(Email) = LOWER(@0)", LoginUser);
+                    Session["UniqueCode"] = db.QueryValue("SELECT Code FROM Account WHERE LOWER(Email) = LOWER(@0)", LoginUser);
+                    Session["Id"] = db.QueryValue("SELECT id FROM Account WHERE LOWER(Email) = LOWER(@0)", LoginUser);
+
+                    // stuurt gebruiker terug naar de volgende pagina
+                    Response.Redirect("~/cshtml/BruidCadeau");
+                }
+            }
+
+        }
+    }
+
+    //GuestCode
+    {
+
+        // hiermee kunnen gasten inloggen
+        // hier haal je het id op van het account
+        String selectLoginCode = "SELECT id FROM Account WHERE Code = @0";
+        if (!Request.QueryString["searchCode"].IsEmpty())
+        {
+            if (Validation.IsValid())
+            {
+                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+                string provider = "System.Data.SqlClient";
+                Database db = Database.OpenConnectionString(connectionString, provider);
+
+                // je maakt de variabele selectedLoginCode, en zoekt je het id wat bij de gast login code hoort
+                var selectedLoginCode = db.QueryValue(selectLoginCode, Request.QueryString["searchCode"]);
+
+                // Zet sessions
+                Session["GuestLoggedIn"] = "Yes";
+                Session["userID"] = selectedLoginCode;
+
+                // stuurt gebruiker terug naar de volgende pagina
+                Response.Redirect("~/cshtml/GastCadeau?id=@" + selectedLoginCode);
+            }
+            else
+            {
+                Response.Redirect("~/cshtml/Homepage");
+            }
+        }
+    }
+
+    //Register
+    {
+        // hier zijn de validatie berichten voor als het niet goed gaat
+        Validation.RequireField("Email", "Voer een email adres in.");
+        Validation.RequireField("Name", "Voer een naam in.");
+        Validation.RequireField("Password", "Voer een wachtwoord in.");
+
+        if (IsPost && Validation.IsValid())
+        {
+            // als alles correct is ingevuld 
+            RegisterEmail = Request.Form["Email"];
+            RegisterPassword = Request.Form["Password"];
+            Name = Request.Form["Name"];
+            RegisterPasswordConfirm = Request.Form["PasswordConfirm"];
+
+            // als beide wachtwoorden hetzelfde zijn gaat hij verder
+            if (RegisterPasswordConfirm == RegisterPassword)
+            {
+                // hier wordt het wachtwoord geencrypt
+                RegisterPassword = Request.Form["Password"];
+                hashed = Crypto.Hash(RegisterPassword, "MD5");
+                sha256 = Crypto.SHA256(RegisterPassword);
+                sha1 = Crypto.SHA1(RegisterPassword);
+                salt = Crypto.GenerateSalt();
+                RegisterhashedPassword = Crypto.HashPassword(RegisterPassword);
+
+                // hier opent hij de database
+                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+                string provider = "System.Data.SqlClient";
+                Database db = Database.OpenConnectionString(connectionString, provider);
+
+                // hier vult hij alles in in de database
+                var insertCommand = "INSERT INTO Account (Email, Password, Name, Code) Values(@0, @1, @2, @3)";
+                db.Execute(insertCommand, RegisterEmail, RegisterhashedPassword, Name, Guid.NewGuid());
+                Response.Redirect("~/cshtml/Homepage.cshtml");
+            }
+
+            else
+            {
+                pwvalidation = false;
+            }
+        }
+    }
+
+    //ResetPassword
+    {
+        Validation.RequireField("ResetEmail", "Voer je email adres in.");
+
+        ResetEmail = Request.Form["fp_email"];
+    }
+
+
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
