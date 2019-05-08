@@ -1,0 +1,109 @@
+﻿@using WebMatrix.Data
+@{
+    // hier geef je aan dat je de layout wilt gebruiken
+    Layout = "~/_Layout.cshtml";
+
+    // hier maak je 4 variabelen aan
+    var Cadeaunaam = "";
+    var Gekocht = "";
+    int Rang = 0;
+    var CadeauId = "";
+
+    if (!IsPost)
+    {
+        // als je een cadeau opzoekt
+        if (!Request.QueryString["ID"].IsEmpty() && Request.QueryString["ID"].IsInt())
+        {
+            CadeauId = Request.QueryString["ID"];
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BridesDatabase.mdf;Integrated Security=True";
+
+            string provider = "System.Data.SqlClient";
+
+            Database db = Database.OpenConnectionString(connectionString, provider);
+            var dbCommand = "SELECT * FROM Cadeaus WHERE ID = @0";
+            var row = db.QuerySingle(dbCommand, CadeauId);
+            if (row != null)
+            {
+                // als de tabel niet leeg is laat hij data zien
+                Cadeaunaam = row.Cadeaunaam;
+                Gekocht = row.Gekocht;
+                Rang = row.Rang;
+            }
+            else
+            {
+                // als er geen cadeau wordt gevonden
+                Validation.AddFormError("Er was geen cadeau gevonden.");
+            }
+        }
+        else
+        {
+            // als er geen cadeau wordt gevonden
+            Validation.AddFormError("Er was geen cadeau gevonden.");
+        }
+    }
+
+    if (IsPost)
+    {
+        // hier maak je van rang een int en request je rang en cadeauid
+        Rang = Convert.ToInt32(Request.Form["Rang"]);
+        CadeauId = Request.Form["CadeauId"];
+
+        // hier kijk je of alle velden gevalideerd zijn
+        if (Validation.IsValid())
+        {
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BridesDatabase.mdf;Integrated Security=True";
+
+            string provider = "System.Data.SqlClient";
+
+            // hier open je de database
+            Database db = Database.OpenConnectionString(connectionString, provider);
+            var updateCommand = "UPDATE Cadeaus SET Gekocht=@0 WHERE Id=@1";
+            db.Execute(updateCommand, "ja", CadeauId);
+
+            // hiermee wordt je weer terug gestuurd naar de cadeau pagina
+            Response.Redirect("~/cshtml/GastCadeau");
+        }
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Pas een cadeau aan</title>
+    <style>
+        .validation-summary-errors {
+            border: 2px dashed red;
+            color: red;
+            font-weight: bold;
+            margin: 12px;
+        }
+    </style>
+</head>
+<body>
+    @Html.ValidationSummary()
+    <form method="post">
+        <fieldset>
+            <legend>Cadeau Informatie</legend>
+            <div class="form-group">
+                <table>
+                    <tr>
+                        <td>Cadeau naam:</td>
+                        <td>@Cadeaunaam</td>
+                    </tr>
+                    <tr>
+                        <td>Gekocht:</td>
+                        <td>@Gekocht</td>
+                    </tr>
+                </table>
+            </div>
+            <input type="hidden" name="cadeauid" value="@CadeauId" />
+            <p>
+                Weet je zeker dat je dit cadeau wilt kopen
+            </p>
+            <button class="btn btn-primary" type="submit" />Ja
+            <button class="btn btn-primary" type="button" onclick="window.location.href='/cshtml/GastCadeau.cshtml'" />Nee
+        </fieldset>
+    </form>
+</body>
+</html>
