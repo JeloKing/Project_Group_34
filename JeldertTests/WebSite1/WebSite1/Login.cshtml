@@ -1,156 +1,159 @@
 ﻿@using WebMatrix.Data
 
-@{ 
+@{
     // hier geef je aan dat je de layout wilt gebruiken
     Layout = "~/_SiteLayout.cshtml";
 
-    // hier maak je de benodigde variabelen aan.
-    //login
+    //Hier maak je de login variabelen aan
     var LoginUser = "";
     var LoginPassword = "";
-    //GuestCode
-    var LoginCode = ""; 
-    //Register
+
+    //hier maak je de GuestCode variabelen aan
+    var LoginCode = "";
+
+    //hier maak je de Register variabelen aan
     bool pwvalidation = true;
+    var RegisterUname = "";
     var RegisterEmail = "";
     var RegisterPassword = "";
-    var Name = "";
+    var RegisterName = "";
     var RegisterPasswordConfirm = "";
     var hashed = "";
     var sha256 = "";
     var sha1 = "";
     var salt = "";
-    var RegisterhashedPassword = "";
+    var RegisterHashedPassword = "";
+
     //Password Reset
     var ResetEmail = "";
 
+    //hier maak je de validatie messages voor de login
+    Validation.RequireField("LoginUser", "voer je gebruikersnaam in");
+    Validation.RequireField("LoginPassword", "voer je wachtwoord in");
+
+    //hier maak je de validatie messages voor de register
+    Validation.RequireField("RegisterUname", "Voer een gebruikersnaam in.");
+    Validation.RequireField("RegisterPassword", "Voer een wachtwoord in.");
+    Validation.RequireField("RegisterEmail", "Voer een e-mail adres in");
+    Validation.RequireField("RegisterName", "Voer een naam in.");
+
+    //hier maak je de validatie messages voor de wwreset
+    Validation.RequireField("ResetEmail","Voer je e-mail adres in");
 
     //LoginForm
     {
-        // hier zet je validatie messages voor als iemand iets niet invult.
-        Validation.RequireField("LoginUser", "Voer je gebruikersnaam adres in.");
-        Validation.RequireField("Password", "Voer je wachtwoord in.");
-
-        // hiermee kunnen gebruikers inloggen
+        //hier begint het login form
         if (IsPost)
         {
-            // Haal email en wachtwoord vaue op uit form
-            LoginUser = Request.Form["Email"];
-            LoginPassword = Request.Form["Password"];
+            //hier selecteer je de username en het password
+            LoginUser = Request.Form["LoginUser"];
+            LoginPassword = Request.Form["LoginPassword"];
 
             if (Validation.IsValid())
             {
-                // hier open je de database
-                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+                //hier wordt de database geopend
+                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BridesDatabase.mdf;Integrated Security=True";
                 string provider = "System.Data.SqlClient";
                 Database db = Database.OpenConnectionString(connectionString, provider);
 
-                // hier haal je het wachtwoord op wat in de database staat
-                var hashedPassword = db.QueryValue("SELECT Password FROM Account WHERE LOWER(Email) = LOWER(@0)", LoginUser);
-                hashedPassword.ToString();
+                //hier haal je de wachtwoorden uit de database
+                var LoginHashedPassword = db.QueryValue("SELECT Password FROM Account WHERE LOWER(LoginPassword) = LOWER(@0)", LoginPassword);
+                LoginHashedPassword.ToString();
 
-                // zet bool checkPassword
+                //hier maak je de checkpassword en vergelijk je de wachtwoorden
                 var checkPassword = false;
-                // Vergelijk de gehashte values van het opgehaalde wachtwoord en het opgegeven wachtwoord
-                checkPassword = Crypto.VerifyHashedPassword(hashedPassword, LoginPassword);
+                checkPassword = Crypto.VerifyHashedPassword(LoginHashedPassword, LoginPassword);
 
-                // hier kijk je of je wachtwoord klopt
+                //hier kijkt hij of de wachtwoorden overeenkwamen
                 if (checkPassword == true)
                 {
-                    // Zet sessions
+                    //hier stel je de sessions in
                     Session["LoggedIn"] = "Yes";
                     Session["Username"] = db.QueryValue("SELECT Email FROM Account WHERE LOWER(Email) = LOWER(@0)", LoginUser);
                     Session["UniqueCode"] = db.QueryValue("SELECT Code FROM Account WHERE LOWER(Email) = LOWER(@0)", LoginUser);
                     Session["Id"] = db.QueryValue("SELECT id FROM Account WHERE LOWER(Email) = LOWER(@0)", LoginUser);
 
-                    // stuurt gebruiker terug naar de volgende pagina
-                    Response.Redirect("~/cshtml/BruidCadeau");
+                    //hier stuur je de gebruiker door naar de cado pagina
+                    Response.Redirect("~/BruidenPagina.cshtml");
                 }
             }
-
         }
     }
 
     //GuestCode
     {
+    //hier haal je het account ID op
+    String selectLoginCode = "SELECT id FROM Account WHERE Code = @0";
 
-        // hiermee kunnen gasten inloggen
-        // hier haal je het id op van het account
-        String selectLoginCode = "SELECT id FROM Account WHERE Code = @0";
-        if (!Request.QueryString["searchCode"].IsEmpty())
+    //hier begint de GuestCode form
+    if (!Request.QueryString["searchCode"].IsEmpty())
+    {
+        if (Validation.IsValid())
         {
-            if (Validation.IsValid())
-            {
-                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
-                string provider = "System.Data.SqlClient";
-                Database db = Database.OpenConnectionString(connectionString, provider);
+            //hier open je de database
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BridesDatabase.mdf;Integrated Security=True";
+            string provider = "System.Data.SqlClient";
+            Database db = Database.OpenConnectionString(connectionString, provider);
 
-                // je maakt de variabele selectedLoginCode, en zoekt je het id wat bij de gast login code hoort
-                var selectedLoginCode = db.QueryValue(selectLoginCode, Request.QueryString["searchCode"]);
+            //hier pak je het ID dat bij de logincode hoort
+            var selectedLoginCode = db.QueryValue(selectLoginCode, Request.QueryString["searchCode"]);
 
-                // Zet sessions
-                Session["GuestLoggedIn"] = "Yes";
-                Session["userID"] = selectedLoginCode;
+            //hier stel je de sessions in
+            Session["GuestLoggedIn"] = "Yes";
+            Session["userID"] = selectedLoginCode;
 
-                // stuurt gebruiker terug naar de volgende pagina
-                Response.Redirect("~/cshtml/GastCadeau?id=@" + selectedLoginCode);
-            }
-            else
-            {
-                Response.Redirect("~/cshtml/Homepage");
-            }
+            //stuurt gasten door naar volgende pagina
+            Response.Redirect("~/GastenPagina?id=@" + selectedLoginCode);
         }
+        //als de code niet geldig is ververst de pagina
+        else
+        {
+            Response.Redirect("~/Login.cshtml");
+        }
+    }
     }
 
     //Register
     {
-        // hier zijn de validatie berichten voor als het niet goed gaat
-        Validation.RequireField("Email", "Voer een email adres in.");
-        Validation.RequireField("Name", "Voer een naam in.");
-        Validation.RequireField("Password", "Voer een wachtwoord in.");
+        
+    if (IsPost && Validation.IsValid())
+    {
+        // als alles juist is ingevuld 
+        RegisterUname = Request.Form["RegisterUname"];
+        RegisterEmail = Request.Form["RegisterEmail"];
+        RegisterPassword = Request.Form["RegisterPassword"];
+        RegisterName = Request.Form["RegisterName"];
+        RegisterPasswordConfirm = Request.Form["RegisterPasswordConfirm"];
 
-        if (IsPost && Validation.IsValid())
+        // als beide wachtwoorden overeenkomen
+        if (RegisterPasswordConfirm == RegisterPassword)
         {
-            // als alles correct is ingevuld 
-            RegisterEmail = Request.Form["Email"];
-            RegisterPassword = Request.Form["Password"];
-            Name = Request.Form["Name"];
-            RegisterPasswordConfirm = Request.Form["PasswordConfirm"];
+            // hier wordt het wachtwoord geencrypt
+            RegisterPassword = Request.Form["RegisterPassword"];
+            hashed = Crypto.Hash(RegisterPassword, "MD5");
+            sha256 = Crypto.SHA256(RegisterPassword);
+            sha1 = Crypto.SHA1(RegisterPassword);
+            salt = Crypto.GenerateSalt();
+            RegisterHashedPassword = Crypto.HashPassword(RegisterPassword);
 
-            // als beide wachtwoorden hetzelfde zijn gaat hij verder
-            if (RegisterPasswordConfirm == RegisterPassword)
-            {
-                // hier wordt het wachtwoord geencrypt
-                RegisterPassword = Request.Form["Password"];
-                hashed = Crypto.Hash(RegisterPassword, "MD5");
-                sha256 = Crypto.SHA256(RegisterPassword);
-                sha1 = Crypto.SHA1(RegisterPassword);
-                salt = Crypto.GenerateSalt();
-                RegisterhashedPassword = Crypto.HashPassword(RegisterPassword);
+            // hier opent hij de database
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BridesDatabase.mdf;Integrated Security=True";
+            string provider = "System.Data.SqlClient";
+            Database db = Database.OpenConnectionString(connectionString, provider);
 
-                // hier opent hij de database
-                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
-                string provider = "System.Data.SqlClient";
-                Database db = Database.OpenConnectionString(connectionString, provider);
-
-                // hier vult hij alles in in de database
-                var insertCommand = "INSERT INTO Account (Email, Password, Name, Code) Values(@0, @1, @2, @3)";
-                db.Execute(insertCommand, RegisterEmail, RegisterhashedPassword, Name, Guid.NewGuid());
-                Response.Redirect("~/cshtml/Homepage.cshtml");
-            }
-
-            else
-            {
-                pwvalidation = false;
-            }
+            // hier vult hij alles in in de database
+            var insertCommand = "INSERT INTO Account (UName, Email, Password, Name, Code) Values(@0, @1, @2, @3, @4)";
+            db.Execute(insertCommand, RegisterUname, RegisterEmail, RegisterHashedPassword, RegisterName, Guid.NewGuid());
+            Response.Redirect("~/Login.cshtml");
         }
+    }
     }
 
     //ResetPassword
     {
-        Validation.RequireField("ResetEmail", "Voer je email adres in.");
-
         ResetEmail = Request.Form["fp_email"];
+
+
     }
 
 
@@ -158,16 +161,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <meta charset="utf-8" />
+    <title>LoginPage</title>
+    <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> -->
+    <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="~/Content/login.css">
-    <script src="~/Scripts/login.js"></script>
+    <script src="~/Scripts/login.js"></script>-->
     <!--<link href='css files/login2.css' rel='stylesheet' type='text/css'> -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <title>Login a Special Day</title>
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Login a Special Day</title>-->
 </head>
 <body>
 
@@ -176,7 +181,6 @@
 <!-- LOGIN FORM -->
 <div class="text-center" style="padding:50px 0">
     <div class="logo">login</div>
-    <!-- Main Form -->
     <div class="login-form-1">
         <form id="login-form" class="text-left">
             <div class="login-form-main-message"></div>
@@ -184,22 +188,23 @@
                 <div class="login-group">
                     <div class="form-group">
                         <label for="lg_username" class="sr-only">Gebruikersnaam</label>
-                        <input type="text" class="form-control" id="lg_username" name="lg_username" placeholder="gebruikersnaam">
+                        <input type="text" class="form-control" id="LoginUser" name="LoginUser" placeholder="gebruikersnaam" @Validation.For("LoginUser")>
+                        @Html.ValidationMessage("LoginUser")
                     </div>
                     <div class="form-group">
                         <label for="lg_password" class="sr-only">Wachtwoord</label>
-                        <input type="password" class="form-control" id="lg_password" name="lg_password" placeholder="wachtwoord">
+                        <input type="password" class="form-control" id="LoginPassword" name="LoginPassword" placeholder="wachtwoord" @Validation.For("LoginPassword")>
+                        @Html.ValidationMessage("loginPassword")
                     </div>
                     <div class="form-group login-group-checkbox">
                         <input type="checkbox" id="lg_remember" name="lg_remember">
                         <label for="lg_remember">onthoud</label>
                     </div>
                 </div>
-                <button type="button" onclick="location.href = 'Index.cshtml'" class="login-button"><i class="fa fa-chevron-right"></i></button>
+                <button type="submit" class="login-button">></button>
             </div>
         </form>
     </div>
-    <!-- end:Main Form -->
 </div>
 <!-- Code Input Form-->
 <div class="text-center" style="padding:50px 0"></div>
@@ -213,58 +218,57 @@
         <div class="main-login-form">
             <div class="login-group">
                 <div class="form-group">
-                    <label for="fp_email" class="sr-only">Uitnodigings Code</label>
-                    <input type="text" class="form-control" id="fp_email" name="fp_email" placeholder="Uitnodigings Code">
+                    <label for="GuestCode" class="sr-only">Uitnodigings Code</label>
+                    <input type="text" class="form-control" value="@LoginCode" id="GuestCode" name="GuestCode" placeholder="Uitnodigings Code" @Validation.For("LoginCode")>
                 </div>
             </div>
-            <button type="button" onclick="location.href = 'Index.cshtml'" class="login-button"><i class="fa fa-chevron-right"></i></button>
+            <button type="submit" class="login-button">><i class="fa fa-chevron-right"></i></button>
         </div>
     </form>
 </div>
 <!-- REGISTRATION FORM -->
 <div class="text-center" style="padding:50px 0">
     <div class="logo">registreer</div>
-    <!-- Main Form -->
     <div class="login-form-1">
         <form id="register-form" class="text-left">
             <div class="login-form-main-message"></div>
             <div class="main-login-form">
                 <div class="login-group">
                     <div class="form-group">
-                        <label for="reg_username" class="sr-only">Email adres</label>
-                        <input type="text" class="form-control" id="reg_username" name="reg_username" placeholder="Gebruikersnaam">
+                        <label for="RegisterUname" class="sr-only">Gebruikersnaam</label>
+                        <input type="text" class="form-control" id="RegisterUname" name="RegisterUname" placeholder="Username" value="@Request.Form["RegisterUname"]" @Validation.For("RegisterUname")>
+                        @Html.ValidationMessage("RegisterUname")
                     </div>
                     <div class="form-group">
-                        <label for="reg_password" class="sr-only">Wachtwoord</label>
-                        <input type="password" class="form-control" id="reg_password" name="reg_password" placeholder="wachtwoord">
+                        <label for="RegisterPassword" class="sr-only">Wachtwoord</label>
+                        <input type="password" class="form-control" id="RegisterPassword" name="RegisterPassword" placeholder="wachtwoord" value="@Request.Form["RegisterPassword"]" @Validation.For("RegisterPassword")>
+                        @Html.ValidationMessage("RegisterPassword")
                     </div>
                     <div class="form-group">
-                        <label for="reg_password_confirm" class="sr-only">bevestig wachtwoord</label>
-                        <input type="password" class="form-control" id="reg_password_confirm" name="reg_password_confirm" placeholder="bevestig wachtwoord">
+                        <label for="RegisterPasswordConfirm" class="sr-only">bevestig wachtwoord</label>
+                        <input type="password" class="form-control" id="RegisterPasswordConfirm" name="RegisterPasswordConfirm" placeholder="bevestig wachtwoord" value="@Request.Form["RegisterPasswordConfirm"]">
+                        @if (!pwvalidation)
+                        {
+                            <p>
+                                Wachtwoorden komen niet overeen.
+                            </p>
+                        }
                     </div>
-
                     <div class="form-group">
-                        <label for="reg_email" class="sr-only">Email</label>
-                        <input type="text" class="form-control" id="reg_email" name="reg_email" placeholder="email">
+                        <label for="RegisterEmail" class="sr-only">Email</label>
+                        <input type="text" class="form-control" id="RegisterEmail" name="RegisterEmail" placeholder="email" value="@Request.Form["RegisterEmail"]" @Validation.For("RegisterEmail")>
+                        @Html.ValidationMessage("RegisterEmail")
                     </div>
                     <div class="form-group">
-                        <label for="reg_fullname" class="sr-only">Volledige naam</label>
-                        <input type="text" class="form-control" id="reg_fullname" name="reg_fullname" placeholder="volledige naam">
-                    </div>
-
-                    <div class="form-group login-group-checkbox">
-                        <input type="radio" class="" name="reg_gender" id="male" placeholder="gebruikersnaam">
-                        <label for="male">man</label>
-
-                        <input type="radio" class="" name="reg_gender" id="female" placeholder="gebruikersnaam">
-                        <label for="female">vrouw</label>
+                        <label for="RegisterName" class="sr-only">Volledige naam</label>
+                        <input type="text" class="form-control" id="RegisterName" name="RegisterName" placeholder="volledige naam" value="@Request.Form["RegisterName"]" @Validation.For("RegisterName")>
+                        @Html.ValidationMessage("RegisterName")
                     </div>
                 </div>
-                <button type="button" onclick="location.href = 'Index.cshtml'" class="login-button"><i class="fa fa-chevron-right"></i></button>
+                <button type="submit" class="login-button">><i class="fa fa-chevron-right"></i></button>
             </div>
         </form>
     </div>
-    <!-- end:Main Form -->
 </div>
 
 <!-- FORGOT PASSWORD FORM -->

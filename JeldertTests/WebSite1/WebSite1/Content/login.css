@@ -90,8 +90,7 @@ a:hover {
   transition: all ease-in-out 500ms;
 }
 .login-form-1 .login-button:hover {
-  color: #555555;
-  transform: rotate(450deg);
+    color: #FF8C00;
 }
 .login-form-1 .login-button.clicked {
   color: #555555;

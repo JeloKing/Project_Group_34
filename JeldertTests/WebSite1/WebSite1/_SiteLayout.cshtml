@@ -9,9 +9,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <!- reference to own style sheet. -!>
-    <link rel="stylesheet" href="~/css/Cadeau.css" />
+    <link rel="stylesheet" href="~/Content/login.css" />
     <title>Hebberige Bruiden</title>
-    <link href="~/css/Cadeau.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/login.css" rel="stylesheet" type="text/css" />
+
+    <script>
+        function startTime() {
+            var today = new Date();
+            var hours = today.getHours();
+            var minutes = today.getMinutes();
+            var seconds = today.getSeconds();
+            minutes = checkTime(minutes);
+            seconds = checkTime(seconds);
+            document.getElementById('txt').innerHTML = hours + ":" + minutes + ":" + seconds;
+            var time = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+            if (i < 10) { i = "0" + i };
+            return i;
+        }
+    </script>
 </head>
 
 <body>
@@ -23,8 +40,9 @@
             @RenderBody()
         </div>
         <div id="footer">
-            &copy; @DateTime.Now A Special Day
+            &copy; a Special Day
         </div>
+        
     </div>
     <!- scripts to support bootstrap. -!>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
