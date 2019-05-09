@@ -1,0 +1,120 @@
+﻿@using WebMatrix.Data
+
+@{
+    // hier geef je aan dat je de layout wilt gebruiken
+    Layout = "~/_Layout.cshtml";
+
+    // hier zijn de validatie berichten voor als het niet goed gaat
+    Validation.RequireField("Email", "Voer een email adres in.");
+    Validation.RequireField("Name", "Voer een naam in.");
+    Validation.RequireField("Password", "Voer een wachtwoord in.");
+
+    // hier maak je 10 variabelen aan
+    bool pwvalidation = true;
+    var Email = "";
+    var Password = "";
+    var Name = "";
+    var PasswordConfirm = "";
+    var hashed = "";
+    var sha256 = "";
+    var sha1 = "";
+    var salt = "";
+    var hashedPassword = "";
+
+    if (IsPost && Validation.IsValid())
+    {
+        // als alles correct is ingevuld 
+        Email = Request.Form["Email"];
+        Password = Request.Form["Password"];
+        Name = Request.Form["Name"];
+        PasswordConfirm = Request.Form["PasswordConfirm"];
+
+        // als beide wachtwoorden hetzelfde zijn gaat hij verder
+        if (PasswordConfirm == Password)
+        {
+            // hier wordt het wachtwoord geencrypt
+            Password = Request.Form["Password"];
+            hashed = Crypto.Hash(Password, "MD5");
+            sha256 = Crypto.SHA256(Password);
+            sha1 = Crypto.SHA1(Password);
+            salt = Crypto.GenerateSalt();
+            hashedPassword = Crypto.HashPassword(Password);
+
+            // hier opent hij de database
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+            string provider = "System.Data.SqlClient";
+            Database db = Database.OpenConnectionString(connectionString, provider);
+
+            // hier vult hij alles in in de database
+            var insertCommand = "INSERT INTO Account (Email, Password, Name, Code) Values(@0, @1, @2, @3)";
+            db.Execute(insertCommand, Email, hashedPassword, Name, Guid.NewGuid());
+            Response.Redirect("~/cshtml/Homepage.cshtml");
+        }
+
+        else
+        {
+            pwvalidation = false;
+        }
+    }
+
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Homepage</title>
+</head>
+
+<body>
+    <div class="py-5 text-center">
+        <div class="container">
+            <div class="row">
+                <div class="mx-auto col-lg-6 col-10">
+                    <h1>Registreren</h1>
+                    <form class="text-left" method="post">
+
+                        <div class="form-group">
+                            <label for="form3">Naam</label>
+                            <input type="text" class="form-control" name="Name" value="@Request.Form["Name"]" @Validation.For("Name")>
+                            @Html.ValidationMessage("Name")
+                        </div>
+
+                        <div class="form-group">
+                            <label for="form4">E-mail</label>
+                            <input type="email" class="form-control" name="E-mail" value="@Request.Form["Email"]" @Validation.For("Email")>
+                            @Html.ValidationMessage("Email")
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="Password">Wachtwoord</label>
+                                <input type="password" class="form-control" name="Password" value="@Request.Form["Password"]" @Validation.For("Password")>
+                                @Html.ValidationMessage("Password")
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label for="PasswordConfirm">Herhaal Wachtwoord</label>
+                                <input type="password" class="form-control" name="PasswordConfirm" value="@Request.Form["PasswordConfirm"]">
+                                @if (pwvalidation == false)
+                                {
+                                    <p>
+                                        Wachtwoorden komen niet overeen.
+                                    </p>
+                                }
+                            </div>
+                        </div>
+                        <table>
+                            <tr>
+                                <td><button class="btn btn-primary" type="submit" />Registreren</td>
+                                <td><button class="btn btn-primary" type="button" onclick="window.location.href='/cshtml/Homepage.cshtml'" />vorige pagina</td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

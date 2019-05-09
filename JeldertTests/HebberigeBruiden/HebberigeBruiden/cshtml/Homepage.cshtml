@@ -1,0 +1,138 @@
+﻿@using WebMatrix.Data
+
+@{
+    // hier geef je aan dat je de layout wilt gebruiken
+    Layout = "~/_Layout.cshtml";
+
+    // hier maak je 3 variabelen aan.
+    var Email = "";
+    var Password = "";
+    var LoginCode = "";
+
+
+
+    // hiermee kunnen gasten inloggen
+    // hier haal je het id op van het account
+    String selectLoginCode = "SELECT id FROM Account WHERE Code = @0";
+    if (!Request.QueryString["searchCode"].IsEmpty())
+    {
+        if (Validation.IsValid())
+        {
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+            string provider = "System.Data.SqlClient";
+            Database db = Database.OpenConnectionString(connectionString, provider);
+
+            // je maakt de variabele selectedLoginCode, en zoekt je het id wat bij de gast login code hoort
+            var selectedLoginCode = db.QueryValue(selectLoginCode, Request.QueryString["searchCode"]);
+
+            // Zet sessions
+            Session["GuestLoggedIn"] = "Yes";
+            Session["userID"] = selectedLoginCode;
+
+            // stuurt gebruiker terug naar de volgende pagina
+            Response.Redirect("~/cshtml/GastCadeau?id=@" + selectedLoginCode);
+        }
+        else
+        {
+            Response.Redirect("~/cshtml/Homepage");
+        }
+    }
+
+    // hier zet je validatie messages voor als iemand iets niet invult.
+    Validation.RequireField("Email", "Voer je email adres in.");
+    Validation.RequireField("Password", "Voer je wachtwoord in.");
+
+    // hiermee kunnen gebruikers inloggen
+    if (IsPost)
+    {
+        // Haal email en wachtwoord vaue op uit form
+        Email = Request.Form["Email"];
+        Password = Request.Form["Password"];
+
+        if (Validation.IsValid())
+        {
+            // hier open je de database
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+            string provider = "System.Data.SqlClient";
+            Database db = Database.OpenConnectionString(connectionString, provider);
+
+            // hier haal je het wachtwoord op wat in de database staat
+            var hashedPassword = db.QueryValue("SELECT Password FROM Account WHERE LOWER(Email) = LOWER(@0)", Email);
+            hashedPassword.ToString();
+
+            // zet bool checkPassword
+            var checkPassword = false;
+            // Vergelijk de gehashte values van het opgehaalde wachtwoord en het opgegeven wachtwoord
+            checkPassword = Crypto.VerifyHashedPassword(hashedPassword, Password);
+
+            // hier kijk je of je wachtwoord klopt
+            if (checkPassword == true)
+            {
+                // Zet sessions
+                Session["LoggedIn"] = "Yes";
+                Session["Username"] = db.QueryValue("SELECT Email FROM Account WHERE LOWER(Email) = LOWER(@0)", Email);
+                Session["UniqueCode"] = db.QueryValue("SELECT Code FROM Account WHERE LOWER(Email) = LOWER(@0)", Email);
+                Session["Id"] = db.QueryValue("SELECT id FROM Account WHERE LOWER(Email) = LOWER(@0)", Email);
+
+                // stuurt gebruiker terug naar de volgende pagina
+                Response.Redirect("~/cshtml/BruidCadeau");
+            }
+        }
+
+
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Homepage</title>
+    
+</head>
+
+
+<body>
+    <div class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="p-5 col-lg-6">
+                    <div class="col-md-12">
+                        <h3 class="">Login</h3>
+                    </div>
+                    <form method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="E-mail" value="@Email" id="Email" name="Email" @Validation.For("Email")>
+                            @Html.ValidationMessage("Email")
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Wachtwoord" value="@Password" id="Password" name="Password" @Validation.For("Password")>
+                            @Html.ValidationMessage("Password")
+                            <small class="form-text text-muted text-right"></small>
+                        </div> 
+
+                        <button type="submit" class="btn btn-primary">Login</button>
+                        <button type="button" class="btn btn-primary" onclick="window.location.href='/cshtml/Register.cshtml'">Registreren</button>
+                    </form>
+                </div>
+                <div class="col-md-6">
+                    <div class="p-5 col-lg-12">
+                        <div class="col-md-12">
+                            <h3 class="">Gasten Login</h3>
+                        </div>
+                        <form method="get">
+                            <div class="form-group">
+                            <input type="text" class="form-control" value="@LoginCode" name="searchCode" placeholder="Gasten Code" id="form1" @Validation.For("LoginCode")> </div>
+                            <div class="form-group">
+                            <small class="form-text text-muted text-right"></small> 
+                            </div> <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

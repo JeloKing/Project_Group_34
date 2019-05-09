@@ -1,0 +1,93 @@
+﻿@using WebMatrix.Data
+
+@{
+    // hier geef je aan dat je de layout wilt gebruiken
+    Layout = "~/_Layout.cshtml";
+
+    // hier open je de database
+    string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+    string provider = "System.Data.SqlClient";
+    Database db = Database.OpenConnectionString(connectionString, provider);
+
+    // hier maak je 2 variabelen aan, de 1e selecteerd alles van de table Cadeaus
+    var selectCommand = "SELECT * FROM Cadeaus";
+    var searchTerm = "";
+
+    // haal de unieke code op
+    var Id = Session["Id"];
+
+    // zoek de cadeaus op basis van de gebruikers unieke code
+    String selectCadeaus = "SELECT * FROM Cadeaus WHERE userID = '" + Id + "'";
+
+    // als je een cadeau zoekt die in de lijst staat haal je hem hiermee op
+    if (!Request.QueryString["searchCadeau"].IsEmpty())
+    {
+        selectCommand = "SELECT * FROM Cadeaus WHERE Cadeaunaam LIKE @0";
+        searchTerm = "%" + Request["searchCadeau"] + "%";
+    }
+
+    // je maakt de variabele selectedData, en je zoekt de cadeaus die bij de code horen die je bij Gast Login hebt gebruikt
+    var selectedCadeaus = db.Query(selectCadeaus, searchTerm);
+    var grid = new WebGrid(source: selectedCadeaus, defaultSort: "Rang", rowsPerPage: 10);
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Cadeaus</title>
+    <style type="text/css">
+        .grid {
+            margin: 4px;
+            border-collapse: collapse;
+            width: 600px;
+        }
+
+            .grid th, .grid td {
+                border: 1px solid #C0C0C0;
+                padding: 5px;
+            }
+
+        .head {
+            background-color: #E8E8E8;
+            font-weight: bold;
+            color: #FFF;
+        }
+
+        .alt {
+            background-color: #E8E8E8;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    Gast login code: @Session["uniqueCode"]
+    <h1>Cadeaus</h1>
+    <form method="get">
+        <div>
+            <label for="SearchTitle">Cadeaunaam bevat het volgende:</label>
+            <input type="text" name="searchCadeau" value="@Request.QueryString["searchCadeau"]" />
+            <button class="btn btn-primary" type="submit" />Zoek Cadeau  
+        </div>
+        <div>
+            <button class="btn btn-primary" type="button" onclick="window.location.href='/cshtml/AddGift.cshtml'" />Voeg cadeau toe
+        </div>
+        
+    </form>
+
+    <div>
+        @grid.GetHtml(
+          tableStyle: "grid",
+          headerStyle: "head",
+          alternatingRowStyle: "alt",
+          columns: grid.Columns(
+          grid.Column(format: @<a href="~/cshtml/EditGift?id=@item.ID">Edit</a>),
+          grid.Column("Cadeaunaam"),
+          grid.Column("Gekocht"),
+          grid.Column("Rang"),
+          grid.Column(format: @<a href="~/cshtml/DeleteGift.cshtml?id=@item.ID">Delete</a>)
+                               )
+                     )
+    </div>
+</body>
+</html>

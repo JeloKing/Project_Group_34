@@ -1,0 +1,90 @@
+﻿@using WebMatrix.Data
+@{
+    // hier geef je aan dat je de layout wilt gebruiken
+    Layout = "~/_Layout.cshtml";
+
+    // hier zet je validatie messages voor als iemand iets niet invult.
+    Validation.RequireField("Cadeaunaam", "Voeg een cadeau toe");
+    Validation.RequireField("Rang", "Hoe graag wil je het cadeau");
+
+    // hier maak je 2 variabelen aan.
+    var Cadeaunaam = "";
+    var Rang = "";
+
+    // hiermee kijk je of alles is ingevuld
+    if (IsPost && Validation.IsValid())
+    {
+        // hier haal je de naam van het cadeau en het rang op
+        Cadeaunaam = Request.Form["Cadeaunaam"];
+        Rang = Request.Form["Rang"];
+
+        // hier open je de database
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+        string provider = "System.Data.SqlClient";
+        Database db = Database.OpenConnectionString(connectionString, provider);
+
+        // hiermee worden de data van de cadeaus gewijzigd in de database
+        var insertCommand = "INSERT INTO Cadeaus (Cadeaunaam, Gekocht, Rang, userID) Values(@0, @1, @2, @3)";
+
+        // hier wordt altijd neergezet dat het cadeau nog niet is gekocht
+        db.Execute(insertCommand, Cadeaunaam, "Nee", Rang, Session["Id"]);
+
+        // hiermee wordt je weer terug gestuurd naar de cadeau pagina
+        Response.Redirect("~/cshtml/BruidCadeau");
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Add a Movie</title>
+    <style type="text/css">
+        .field-validation-error {
+            font-weight: bold;
+            color: red;
+            background-color: yellow;
+        }
+
+        .validation-summary-errors {
+            border: 2px dashed red;
+            color: red;
+            background-color: yellow;
+            font-weight: bold;
+            margin: 12px;
+        }
+    </style>
+</head>
+<body>
+    @Html.ValidationSummary()
+    <form method="post">
+        <fieldset>
+            <legend>Cadeau informatie</legend>
+            <p>
+                <table>
+                    <tr>
+                        <td><label for="Cadeaunaam">Cadeaunaam:</label></td>
+                        <td>
+                            <input type="text" name="Cadeaunaam" value="@Request.Form["Cadeaunaam"]" />
+                            @Html.ValidationMessage("Cadeaunaam")
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="Rang">Rang:</label></td>
+                        <td>
+                            <input type="number" name="Rang" value="@Request.Form["Rang"]" />
+                            @Html.ValidationMessage("Rang")
+                        </td>
+                    </tr>
+                </table>
+            </p>
+            <table>
+                <tr>
+                    <td><button class="btn btn-primary" type="submit" />Voeg cadeau toe</td>
+                    <td><button class="btn btn-primary" type="button" onclick="window.location.href='/cshtml/BruidCadeau.cshtml'" />Ga terug</td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</body>
+</html>

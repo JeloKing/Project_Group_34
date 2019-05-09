@@ -1,0 +1,95 @@
+﻿@using WebMatrix.Data
+@{
+    // hier geef je aan dat je de layout wilt gebruiken
+    Layout = "~/_Layout.cshtml";
+
+    // hier maak je 4 variabelen aan.
+    var Cadeaunaam = "";
+    var Gekocht = "";
+    int Rang = 0;
+    var CadeauId = "";
+
+    if (!IsPost)
+    {
+        if (!Request.QueryString["ID"].IsEmpty() && Request.QueryString["ID"].IsInt())
+        {
+            CadeauId = Request.QueryString["ID"];
+
+            // hier open je de database
+            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+            string provider = "System.Data.SqlClient";
+            Database db = Database.OpenConnectionString(connectionString, provider);
+
+            // hier wordt 
+            var dbCommand = "SELECT * FROM Cadeaus WHERE ID = @0";
+            var row = db.QuerySingle(dbCommand, CadeauId);
+
+            // als de tabel niet leeg is laat hij data zien
+            if (row != null)
+            {
+                Cadeaunaam = row.Cadeaunaam;
+                Gekocht = row.Gekocht;
+                Rang = row.Rang;
+            }
+            else
+            {
+                // als er geen cadeau wordt gevonden
+                Validation.AddFormError("Er was geen cadeau gevonden.");
+            }
+        }
+
+    }
+
+    if (IsPost)
+    {
+        // hier wordt het id van het cadeau opgehaald
+        CadeauId = Request.QueryString["ID"];
+
+        // hier open je de database
+        string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+        string provider = "System.Data.SqlClient";
+        Database db = Database.OpenConnectionString(connectionString, provider);
+
+        // hier wordt het cadeau verwijderd uit de database
+        var deleteCommand = "DELETE FROM Cadeaus WHERE ID = @0";
+        db.Execute(deleteCommand, CadeauId);
+
+        // hier wordt je doorgestuurd naar bruidcadeau pagina
+        Response.Redirect("~/cshtml/BruidCadeau");
+    }
+}
+
+<html>
+<head>
+    <title>Verwijder een Cadeau</title>
+</head>
+<body>
+    @Html.ValidationSummary()
+    <form method="post">
+        <fieldset>
+            <legend>Cadeau Informatie</legend>
+            <table>
+                <tr>
+                    <td>Cadeaunaam:</td>
+                    <td>@Cadeaunaam</td>
+                </tr>
+                <tr>
+                    <td>Gekocht:</td>
+                    <td>@Gekocht</td>
+                </tr>
+                <tr>
+                    <td>Rang:</td>
+                    <td>@Rang</td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td><button class="btn btn-primary" type="submit" />Cadeau verwijderen</td>
+                    <td><button class="btn btn-primary" type="button" onclick="window.location.href='/cshtml/BruidCadeau.cshtml'" />Ga terug</td>
+                </tr>
+            </table>
+            
+        </fieldset>
+    </form>
+</body>
+</html>
