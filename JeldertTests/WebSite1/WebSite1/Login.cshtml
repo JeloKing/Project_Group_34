@@ -2,7 +2,7 @@
 
 @{
     // hier geef je aan dat je de layout wilt gebruiken
-    Layout = "~/_SiteLayout.cshtml";
+    Layout ="~/_SiteLayout.cshtml";
 
     //Hier maak je de login variabelen aan
     var LoginUser = "";
@@ -82,76 +82,76 @@
 
     //GuestCode
     {
-    //hier haal je het account ID op
-    String selectLoginCode = "SELECT id FROM Account WHERE Code = @0";
+        //hier haal je het account ID op
+        String selectLoginCode = "SELECT id FROM Account WHERE Code = @0";
 
-    //hier begint de GuestCode form
-    if (!Request.QueryString["searchCode"].IsEmpty())
-    {
-        if (Validation.IsValid())
+        //hier begint de GuestCode form
+        if (!Request.QueryString["searchCode"].IsEmpty())
         {
-            //hier open je de database
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BridesDatabase.mdf;Integrated Security=True";
-            string provider = "System.Data.SqlClient";
-            Database db = Database.OpenConnectionString(connectionString, provider);
+            if (Validation.IsValid())
+            {
+                //hier open je de database
+                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BridesDatabase.mdf;Integrated Security=True";
+                string provider = "System.Data.SqlClient";
+                Database db = Database.OpenConnectionString(connectionString, provider);
 
-            //hier pak je het ID dat bij de logincode hoort
-            var selectedLoginCode = db.QueryValue(selectLoginCode, Request.QueryString["searchCode"]);
+                //hier pak je het ID dat bij de logincode hoort
+                var selectedLoginCode = db.QueryValue(selectLoginCode, Request.QueryString["searchCode"]);
 
-            //hier stel je de sessions in
-            Session["GuestLoggedIn"] = "Yes";
-            Session["userID"] = selectedLoginCode;
+                //hier stel je de sessions in
+                Session["GuestLoggedIn"] = "Yes";
+                Session["userID"] = selectedLoginCode;
 
-            //stuurt gasten door naar volgende pagina
-            Response.Redirect("~/GastenPagina?id=@" + selectedLoginCode);
+                //stuurt gasten door naar volgende pagina
+                Response.Redirect("~/GastenPagina?id=@" + selectedLoginCode);
+            }
+            //als de code niet geldig is ververst de pagina
+            else
+            {
+                Response.Redirect("~/Login.cshtml");
+            }
         }
-        //als de code niet geldig is ververst de pagina
-        else
-        {
-            Response.Redirect("~/Login.cshtml");
-        }
-    }
     }
 
     //Register
     {
-        
-    if (IsPost && Validation.IsValid())
-    {
-        // als alles juist is ingevuld 
-        RegisterUname = Request.Form["RegisterUname"];
-        RegisterEmail = Request.Form["RegisterEmail"];
-        RegisterPassword = Request.Form["RegisterPassword"];
-        RegisterName = Request.Form["RegisterName"];
-        RegisterPasswordConfirm = Request.Form["RegisterPasswordConfirm"];
 
-        // als beide wachtwoorden overeenkomen
-        if (RegisterPasswordConfirm == RegisterPassword)
+        if (IsPost && Validation.IsValid())
         {
-            // hier wordt het wachtwoord geencrypt
+            // als alles juist is ingevuld 
+            RegisterUname = Request.Form["RegisterUname"];
+            RegisterEmail = Request.Form["RegisterEmail"];
             RegisterPassword = Request.Form["RegisterPassword"];
-            hashed = Crypto.Hash(RegisterPassword, "MD5");
-            sha256 = Crypto.SHA256(RegisterPassword);
-            sha1 = Crypto.SHA1(RegisterPassword);
-            salt = Crypto.GenerateSalt();
-            RegisterHashedPassword = Crypto.HashPassword(RegisterPassword);
+            RegisterName = Request.Form["RegisterName"];
+            RegisterPasswordConfirm = Request.Form["RegisterPasswordConfirm"];
 
-            // hier opent hij de database
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BridesDatabase.mdf;Integrated Security=True";
-            string provider = "System.Data.SqlClient";
-            Database db = Database.OpenConnectionString(connectionString, provider);
+            // als beide wachtwoorden overeenkomen
+            if (RegisterPasswordConfirm == RegisterPassword)
+            {
+                // hier wordt het wachtwoord geencrypt
+                RegisterPassword = Request.Form["RegisterPassword"];
+                hashed = Crypto.Hash(RegisterPassword, "MD5");
+                sha256 = Crypto.SHA256(RegisterPassword);
+                sha1 = Crypto.SHA1(RegisterPassword);
+                salt = Crypto.GenerateSalt();
+                RegisterHashedPassword = Crypto.HashPassword(RegisterPassword);
 
-            // hier vult hij alles in in de database
-            var insertCommand = "INSERT INTO Account (UName, Email, Password, Name, Code) Values(@0, @1, @2, @3, @4)";
-            db.Execute(insertCommand, RegisterUname, RegisterEmail, RegisterHashedPassword, RegisterName, Guid.NewGuid());
-            Response.Redirect("~/Login.cshtml");
+                // hier opent hij de database
+                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BridesDatabase.mdf;Integrated Security=True";
+                string provider = "System.Data.SqlClient";
+                Database db = Database.OpenConnectionString(connectionString, provider);
+
+                // hier vult hij alles in in de database
+                var insertCommand = "INSERT INTO Account (UName, Email, Password, Name, Code) Values(@0, @1, @2, @3, @4)";
+                db.Execute(insertCommand, RegisterUname, RegisterEmail, RegisterHashedPassword, RegisterName, Guid.NewGuid());
+                Response.Redirect("~/Login.cshtml");
+            }
         }
-    }
     }
 
     //ResetPassword
     {
-        ResetEmail = Request.Form["fp_email"];
+        ResetEmail = Request.Form["ResetEmail"];
 
 
     }

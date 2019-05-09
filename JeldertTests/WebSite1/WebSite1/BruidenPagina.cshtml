@@ -2,10 +2,10 @@
 
 @{
     // hier geef je aan dat je de layout wilt gebruiken
-    Layout = "~/_Layout.cshtml";
+    Layout = "~/_SiteLayout.cshtml";
 
     // hier open je de database
-    string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+    string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\BridesDatabase.mdf;Integrated Security=True";
     string provider = "System.Data.SqlClient";
     Database db = Database.OpenConnectionString(connectionString, provider);
 
@@ -70,7 +70,7 @@
             <button class="btn btn-primary" type="submit" />Zoek Cadeau
         </div>
         <div>
-            <button class="btn btn-primary" type="button" onclick="window.location.href='/cshtml/AddGift.cshtml'" />Voeg cadeau toe
+            <button class="btn btn-primary" type="button" onclick="window.location.href='~/EchtpaarAddGift.cshtml'" />Voeg cadeau toe
         </div>
 
     </form>
@@ -81,11 +81,11 @@
           headerStyle: "head",
           alternatingRowStyle: "alt",
           columns: grid.Columns(
-          grid.Column(format: @<a href="~/cshtml/EditGift?id=@item.ID">Edit</a>),
+          grid.Column(format: @<a href="~EchtpaarEditGift?id=@item.ID">Edit</a>),
 grid.Column("Cadeaunaam"),
 grid.Column("Gekocht"),
 grid.Column("Rang"),
-grid.Column(format: @<a href="~/cshtml/DeleteGift.cshtml?id=@item.ID">Delete</a>)
+grid.Column(format: @<a href="~/EchtpaarDeleteGift.cshtml?id=@item.ID">Delete</a>)
 )
 )
     </div>
