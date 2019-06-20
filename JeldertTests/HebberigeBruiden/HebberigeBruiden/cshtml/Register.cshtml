@@ -21,42 +21,44 @@
     var salt = "";
     var hashedPassword = "";
 
-    if (IsPost && Validation.IsValid())
+    if (IsPost)
     {
-        // als alles correct is ingevuld 
-        Email = Request.Form["Email"];
-        Password = Request.Form["Password"];
-        Name = Request.Form["Name"];
-        PasswordConfirm = Request.Form["PasswordConfirm"];
-
-        // als beide wachtwoorden hetzelfde zijn gaat hij verder
-        if (PasswordConfirm == Password)
+        if (Validation.IsValid())
         {
-            // hier wordt het wachtwoord geencrypt
+            // als alles correct is ingevuld 
+            Email = Request.Form["Email"];
             Password = Request.Form["Password"];
-            hashed = Crypto.Hash(Password, "MD5");
-            sha256 = Crypto.SHA256(Password);
-            sha1 = Crypto.SHA1(Password);
-            salt = Crypto.GenerateSalt();
-            hashedPassword = Crypto.HashPassword(Password);
+            Name = Request.Form["Name"];
+            PasswordConfirm = Request.Form["PasswordConfirm"];
 
-            // hier opent hij de database
-            string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
-            string provider = "System.Data.SqlClient";
-            Database db = Database.OpenConnectionString(connectionString, provider);
+            // als beide wachtwoorden hetzelfde zijn gaat hij verder
+            if (PasswordConfirm == Password)
+            {
+                // hier wordt het wachtwoord geencrypt
+                Password = Request.Form["Password"];
+                hashed = Crypto.Hash(Password, "MD5");
+                sha256 = Crypto.SHA256(Password);
+                sha1 = Crypto.SHA1(Password);
+                salt = Crypto.GenerateSalt();
+                hashedPassword = Crypto.HashPassword(Password);
 
-            // hier vult hij alles in in de database
-            var insertCommand = "INSERT INTO Account (Email, Password, Name, Code) Values(@0, @1, @2, @3)";
-            db.Execute(insertCommand, Email, hashedPassword, Name, Guid.NewGuid());
-            Response.Redirect("~/cshtml/Homepage.cshtml");
-        }
+                // hier opent hij de database
+                string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\General.mdf;Integrated Security=True";
+                string provider = "System.Data.SqlClient";
+                Database db = Database.OpenConnectionString(connectionString, provider);
 
-        else
-        {
-            pwvalidation = false;
+                // hier vult hij alles in in de database
+                var insertCommand = "INSERT INTO Account (Email, Password, Name, Code) Values(@0, @1, @2, @3)";
+                db.Execute(insertCommand, Email, hashedPassword, Name, Guid.NewGuid());
+                Response.Redirect("~/cshtml/Homepage.cshtml");
+            }
+
+            else
+            {
+                pwvalidation = false;
+            }
         }
     }
-
 }
 
 <!DOCTYPE html>
