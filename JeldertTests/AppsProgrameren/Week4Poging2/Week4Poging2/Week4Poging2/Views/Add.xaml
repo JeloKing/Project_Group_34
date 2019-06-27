@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Week4Poging2.Views.Add">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Image Source="" Margin="2" HeightRequest="100" WidthRequest="100">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SelectImageClicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Source="" Margin="2" HeightRequest="100" WidthRequest="100" Opacity="0.5">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="SelectImageClicked"/>
+                    </Image.GestureRecognizers>
+                </Image>
+            </StackLayout>
+            <ScrollView>
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Enter title"></Label>
+                    <Entry x:Name="AddTitle" Placeholder="Title"></Entry>
+                    <Label Text="Enter description"></Label>
+                    <Entry x:Name="AddDescription" Placeholder="Description"></Entry>
+                    <Label Text="Enter year"></Label>
+                    <Entry x:Name="AddYear" Placeholder="Year"></Entry>
+
+                    <Label Text="YearEnded" IsVisible="False"></Label>
+                    <Entry x:Name="YearEndedEntry" Placeholder="YearEnded" IsVisible="False"></Entry>
+                    <Label Text="NumberOfEpisodes" IsVisible="False"></Label>
+                    <Entry x:Name="NumberOfEpisodesEntry" Placeholder="NumberOfEpisodes" IsVisible="False"></Entry>
+                    <Label Text="NumberOfSeasons" IsVisible="False"></Label>
+                    <Entry x:Name="NumberOfSeasonsEntry" Placeholder="NumberOfSeasons" IsVisible="False"></Entry>
+
+                    <Button x:Name="AddButton" Text="Add" HorizontalOptions="Center" Clicked="AddButton_Clicked" Padding="2" Margin="0,16,0,0"></Button>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

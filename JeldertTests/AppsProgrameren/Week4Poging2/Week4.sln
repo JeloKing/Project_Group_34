@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29009.5
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week4Poging2.Android", "Week4Poging2\Week4Poging2.Android\Week4Poging2.Android.csproj", "{33E62778-F1CB-4FA6-B9C4-61AF22EEA3EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Week4Poging2", "Week4Poging2\Week4Poging2\Week4Poging2.csproj", "{B10E00B0-CF66-4A4D-B92E-2552CE765DFF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{33E62778-F1CB-4FA6-B9C4-61AF22EEA3EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33E62778-F1CB-4FA6-B9C4-61AF22EEA3EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33E62778-F1CB-4FA6-B9C4-61AF22EEA3EC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{33E62778-F1CB-4FA6-B9C4-61AF22EEA3EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33E62778-F1CB-4FA6-B9C4-61AF22EEA3EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33E62778-F1CB-4FA6-B9C4-61AF22EEA3EC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B10E00B0-CF66-4A4D-B92E-2552CE765DFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B10E00B0-CF66-4A4D-B92E-2552CE765DFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B10E00B0-CF66-4A4D-B92E-2552CE765DFF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B10E00B0-CF66-4A4D-B92E-2552CE765DFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B10E00B0-CF66-4A4D-B92E-2552CE765DFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B10E00B0-CF66-4A4D-B92E-2552CE765DFF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {74B24137-9A22-43EC-A0A7-09C41A18B26A}
+	EndGlobalSection
+EndGlobal

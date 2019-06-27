@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:local="clr-namespace:Week4Poging2"
+                  mc:Ignorable="d"
+             x:Class="Week4Poging2.Views.MasterPage"
+                  Title="MasterDetailPage">
+    <MasterDetailPage.Master>
+        <ContentPage Title="MasterPage">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Image Source="Images/bg.jpg" Aspect="AspectFill"></Image>
+                    <StackLayout Padding="0,20,0,0" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label FontSize="Large" TextColor="Red" Text=""/>
+                    </StackLayout>
+                </Grid>
+                <StackLayout Grid.Row="1" Spacing="8">
+                    <ListView x:Name="NavigationDrawerList" RowHeight="48" ItemSelected="NavigationDrawerList_ItemSelected">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <local:CustomViewCell>
+                                    <ViewCell.View>
+                                        <StackLayout VerticalOptions="FillAndExpand" Spacing="12" Padding="0,20,0,0" Orientation="Horizontal">
+                                            <Image Source="" VerticalOptions="Center" HeightRequest="24" WidthRequest="24"></Image>
+                                            <Label Text="{Binding Title}" FontSize="Default" VerticalOptions="Center" TextColor="Black"/>
+                                        </StackLayout>
+                                    </ViewCell.View>
+                                </local:CustomViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <local:MainPage />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

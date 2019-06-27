@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Week4Poging2.Views.Favorites">
+    <ContentPage.Content>
+        <StackLayout Margin="8">
+            <Label Text="Favorites" FontSize="36"/>
+            <Label Text="Favorite movies" FontSize="Large"/>
+            <ListView x:Name="MovieList" RowHeight="64" VerticalOptions="Start">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ScrollView>
+                                <StackLayout Margin="4" VerticalOptions="Center">
+                                    <Label Text="{Binding Title}" Margin="8" FontSize="16"/>
+                                    <Label Text="{Binding Description}" Margin="8" FontSize="8"/>
+                                </StackLayout>
+                            </ScrollView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="Favorite series" FontSize="Large"/>
+            <ListView x:Name="SerieList" RowHeight="64" VerticalOptions="Start">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ScrollView>
+                                <StackLayout Margin="4" VerticalOptions="Center">
+                                    <Label Text="{Binding Title}" Margin="8" FontSize="16"/>
+                                    <Label Text="{Binding Description}" Margin="8" FontSize="8"/>
+                                </StackLayout>
+                            </ScrollView>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
